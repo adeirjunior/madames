@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { BsBag, BsPerson } from "react-icons/bs";
 import type { FC } from "react";
+import { useStateContext } from "../global/context/StateContext";
 
 const Style = styled.div`
 background-color: #fff;
@@ -11,7 +12,7 @@ justify-content: space-between;
 #logo {
   display: flex;
   align-items: center;
-  font-family: 'Parisienne', cursive;
+  font-family: 'Parisienne' !important;
   text-transform: capitalize;
   h1 {
     font-size: 1.25rem;
@@ -47,6 +48,7 @@ justify-content: space-between;
 `;
 
 const Navbar: FC = () => {
+  const { totalQuantities, incQty }: any = useStateContext();
   return (
     <Style>  
       <div id="logo">
@@ -56,9 +58,12 @@ const Navbar: FC = () => {
       <div id="nav-options">
         <div>
           <BsBag />
-          <span>1</span>
+          {totalQuantities > 0 && <span>{totalQuantities}</span>}
         </div>
-        <BsPerson />
+        <span onClick={incQty}>
+          <BsPerson />
+        </span>
+        
       </div>
     </Style>
   )

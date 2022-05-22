@@ -4,21 +4,28 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { client } from '../lib/client';
 import { Product } from '../components';
+import Grid from '../components/Grid';
 
 const Style = styled.div`
-div{
-  background-color: red;
+.hero-banner{
+  background-color: #EE7674;
+  width: 100%;
+  height: 10em;
+  border-radius: 1em;
 }
 `
 
 const Home: NextPage = ({ products }: any) => {
-  console.log(products);
+
   return (
     <Style>
-      <div></div>
-      {
-        products.map((product: any) => <Product key={product._id} product={product}/>)
-      }
+      <div className="hero-banner"></div>
+      <Grid>
+        {
+          products.map((product: any) => <Product key={product._id} product={product}/>)
+        }
+      </Grid>
+     
     </Style>
   )
 }

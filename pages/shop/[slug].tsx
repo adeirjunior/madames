@@ -1,11 +1,13 @@
 import type { NextPage } from "next";
 import { client } from "../../lib/client";
+import Image from "next/image";
+import { urlFor } from "../../lib/client";
 
-const Item: NextPage = () => {
+const Item: NextPage = ({ product: { image } }: any) => {
 
-    return <>
-    
-    </>
+    return (
+        <Image width={150} height={250} alt="ao" src={urlFor(image && image[0].asset._ref).url()}/>
+    )
 }
 
 export default Item;
@@ -23,19 +25,21 @@ export const getStaticPaths = async () => {
             slug: product.slug.current
         }
     }))
+    console.log(paths)
     return {
-        props: {
-            paths,
-            fallback: "blocking"
-        }
-    }
+        paths,
+        fallback: false
+    } 
 }
 export const getStaticProps = async ({ params: { slug } }: any) => {
     const query = `*[_type == "product" && slug.current == "${slug}"][0]`;
-
+    const productsQuery = '*[_type == "product"]';
+    const product = await client.fetch(query);
+    const products = await client.fetch(productsQuery);
     return {
         props: {
-
+            product,
+            products
         }
     }
 }
