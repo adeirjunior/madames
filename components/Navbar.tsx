@@ -49,7 +49,6 @@ justify-content: space-between;
 
 const Navbar = ({ path }: any) => {
   const { totalQuantities, incQty }: any = useStateContext();
-  console.log(path);
   return (
     <Style>  
       { path === "/" ? 

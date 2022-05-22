@@ -33,7 +33,7 @@ const Product: FC<Prop> = ({ product: {image, name, slug, price} }: Prop) => {
       <Link href={`/shop/${slug?.current}`}>
         <div>
           <Image
-          alt="ao" 
+          alt={slug?.current}
           width={250} 
           height={325} 
           src={urlFor(image && image[0].asset._ref).url()}

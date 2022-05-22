@@ -5,9 +5,7 @@ import type { FC } from "react";
 import { Navbar, Footer } from "./";
 
 const Style = styled.div`
-main{
-  margin: 0 2em;
-}
+background-color: #fff;
 `;
 
 const Layout = ({ children, path }: ChildrenProp) => {

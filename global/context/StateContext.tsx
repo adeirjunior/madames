@@ -51,7 +51,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             product.quantity = quantity;
             setCartItems([...cartItems, {...product}]);
         }
-        toast.success(`${qty} ${product.name} added to the cart`);
+        toast.success(`${qty} ${product.name} Adicionado Ao Carrinho`);
     }
     return (
         <Context.Provider
@@ -67,7 +67,8 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             logo,
             setLogo,
             path, 
-            setPath
+            setPath,
+            onAdd
         }}
         >
             {children}
