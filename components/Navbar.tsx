@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BsBag, BsPerson } from "react-icons/bs";
+import type { FC } from "react";
 
 const Style = styled.div`
 background-color: #fff;
@@ -45,7 +46,7 @@ justify-content: space-between;
 
 `;
 
-function Navbar() {
+const Navbar: FC = () => {
   return (
     <Style>  
       <div id="logo">

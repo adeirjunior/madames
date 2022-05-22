@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import  Head  from "next/head";
 import type { ChildrenProp } from "../types/types";
+import type { FC } from "react";
 import { Navbar, Footer } from "./";
 
 const Style = styled.div`

@@ -4,14 +4,19 @@ import type { ChildrenProp } from "../../types/types";
 import type { FC } from "react";
 import type { Product } from "../../types/interfaces";
 
+interface CartItemsProps {
+    _id: any,
+    quantity: number
+}
 const Context = createContext({});
 export const StateContext: FC<ChildrenProp> = ({ children }) => {
     const [logo, setLogo] = useState("Perfumes");
     const [showCart, setShowCart] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState([] as CartItemsProps[]);
     const [totalPrice, setTotalPrice] = useState();
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [qty, setQty] = useState(1);
+
 
     const incQty = () => {
         setQty((prev) => prev + 1);
@@ -27,18 +32,19 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
         const checkProductInCart = cartItems.find((item: {_id: any}) => item._id === product._id);
         setTotalPrice((prev: any) => prev + product.price * quantity);
         setTotalQuantities(prev => prev + quantity);
+            
 
         if (checkProductInCart) {
             
 
-            const updatedCartItems = cartItems.map( (cartProduct: {_id: any, quantity: number}) => {
+            const updatedCartItems = cartItems.map( (cartProduct: CartItemsProps) => {
                 if (cartProduct._id === product._id) {
                     return {
                         ...cartProduct,
                         quantity: cartProduct.quantity + quantity
                     }
                 }
-            })
+            }) as unknown as CartItemsProps[]
             setCartItems(updatedCartItems);
         } else {
             product.quantity = quantity;

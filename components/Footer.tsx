@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { BsInstagram } from "react-icons/bs";
+import type { FC } from "react";
 
 const Style = styled.div`
   background-color: #fff;
 `;
 
-function Footer() {
+const Footer: FC = () => {
   return (
     <Style>
 
