@@ -13,3 +13,5 @@ const Cart: NextPage = () => {
         </Style>
     )
 }
+
+export default Cart;

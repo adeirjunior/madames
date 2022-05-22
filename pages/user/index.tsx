@@ -6,3 +6,5 @@ const User: NextPage = () => {
     
     </>
 }
+
+export default User;

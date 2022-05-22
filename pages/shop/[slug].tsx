@@ -43,3 +43,4 @@ export const getStaticProps = async ({ params: { slug } }: any) => {
         }
     }
 }
+

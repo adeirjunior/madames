@@ -6,3 +6,5 @@ const Shop: NextPage = () => {
     
     </>
 }
+
+export default Shop;
