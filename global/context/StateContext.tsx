@@ -16,6 +16,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     const [totalPrice, setTotalPrice] = useState();
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [qty, setQty] = useState(1);
+    const [path, setPath] = useState()
 
 
     const incQty = () => {
@@ -64,7 +65,9 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             totalPrice,
             totalQuantities,
             logo,
-            setLogo
+            setLogo,
+            path, 
+            setPath
         }}
         >
             {children}

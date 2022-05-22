@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { BsBag, BsPerson } from "react-icons/bs";
-import type { FC } from "react";
+import { BsBag, BsPerson, BsArrowLeft } from "react-icons/bs";
 import { useStateContext } from "../global/context/StateContext";
+import Link from "next/link";
 
 const Style = styled.div`
 background-color: #fff;
@@ -47,14 +47,26 @@ justify-content: space-between;
 
 `;
 
-const Navbar: FC = () => {
+const Navbar = ({ path }: any) => {
   const { totalQuantities, incQty }: any = useStateContext();
+  console.log(path);
   return (
     <Style>  
-      <div id="logo">
-        <h1>m'adames</h1>
-        <span>perfumes</span>
-      </div>
+      { path === "/" ? 
+      (
+        <div id="logo">
+          <h1>m'adames</h1>
+          <span>perfumes</span>
+        </div>
+      ) : 
+      (
+
+        <Link href="/">
+          <BsArrowLeft />
+        </Link>
+      )
+        
+      }
       <div id="nav-options">
         <div>
           <BsBag />
