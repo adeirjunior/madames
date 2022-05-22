@@ -23,23 +23,30 @@ justify-content: space-between;
     margin-left: 1em;
   }
 }
+.left-arrow, #nav-options .bag-icon, #nav-options .profile-icon{
+  svg {
+    width: 25px;
+    height: auto;
+  }
+}
 #nav-options {
   display: flex;
   
-  div {
-    margin-right: 1em;
+  .bag-icon {
+    margin-right: 1.5em;
     position: relative;
 
     span {
       position: absolute;
-      left: 1em;
+      left: 1.2em;
+      text-align: center;
       border-radius: 50%;
       background-color: #fff;
       border: solid black 1px;
-      width: 1.25em;
-      height: 1.25em;
+      width: 1.35em;
+      height: 1.35em;
       text-align: center;
-      font-size: .5rem;
+      font-size: .75rem;
       font-family: Montserrat;
     }
   }
@@ -61,20 +68,21 @@ const Navbar = ({ path }: any) => {
       (
 
         <Link href="/">
-          <BsArrowLeft />
+          <div className="left-arrow">
+            <BsArrowLeft />
+          </div>
         </Link>
       )
         
       }
       <div id="nav-options">
-        <div>
+        <div className="bag-icon">
           <BsBag />
           {totalQuantities > 0 && <span>{totalQuantities}</span>}
         </div>
-        <span>
+        <span className="profile-icon">
           <BsPerson />
-        </span>
-        
+        </span>  
       </div>
     </Style>
   )
