@@ -30,20 +30,13 @@ const Item: NextPage = ({ product }: any) => {
                 </span>
             </p> 
         </div>
-        <div className="buttons">
-            <button 
-            type="button" 
-            className='add-to-cart'
-            onClick={() => onAdd(product, qty)}>
-                Add to Card
-            </button>
-            <button 
-            type="button" 
-            className='buy-now'
-            >
-                Buy Now
-            </button>
-        </div>
+        <button 
+        type="button" 
+        className='add-to-cart'
+        onClick={() => onAdd(product, qty)}
+        >
+            Adicionar Ao Carrinho
+        </button>
         </Style>
     )
 };

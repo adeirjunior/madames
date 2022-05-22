@@ -19,12 +19,8 @@ const GlobalStyle = createGlobalStyle`
   h2, h3, h4, h5, p, a {
     font-family: 'Montserrat', sans-serif;
   }
-  input,
-  textarea,
-  button,
-  select,
-  a {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 `;
   

@@ -71,7 +71,7 @@ const Navbar = ({ path }: any) => {
           <BsBag />
           {totalQuantities > 0 && <span>{totalQuantities}</span>}
         </div>
-        <span onClick={incQty}>
+        <span>
           <BsPerson />
         </span>
         
