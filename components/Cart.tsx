@@ -13,8 +13,8 @@ right: 0;
 background-color: #ff5;
 z-index: 1;
 
-body{
-  overflow: ${(props: any) => (props.active ? "hidden" : "auto")}; 
+.heading {
+  padding: .75em .75em;
 }
 `;
 
@@ -24,9 +24,12 @@ const Cart: FC = () => {
 
   return (
     <Style active={showCart}>
-      <div onClick={() => setShowCart(false)} className="left-arrow">
-        <BsArrowLeft />
+      <div className="heading">
+        <div onClick={() => setShowCart(false)} className="left-arrow">
+          <BsArrowLeft />
+        </div>
       </div>
+      
     </Style>
   )
 }
