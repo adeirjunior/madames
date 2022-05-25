@@ -1,7 +1,6 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
-import Image from 'next/image';
 import { client } from '../lib/client';
 import { HeroBanner, Product } from '../components';
 import Grid from '../components/Grid';
@@ -15,7 +14,25 @@ const Style = styled.div`
     justify-content: center;
     margin: 1.5em 0 0;
   }
-  .as{
+  .home-categories {
+    font-family: Montserrat;
+    font-size: .8rem;
+    display: flex;
+    justify-content: center;
+    margin: 1.5em 0;
+    color: #5D5D5D;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      li {
+        &:not(:last-child) {
+          margin-right: .5em;
+        }
+      }
+    }
+  }
+  .search-wrapper{
     display: flex;
     justify-content: center;
     margin: 1em 0;
@@ -42,14 +59,24 @@ const Home: NextPage = ({ products, banner }: any) => {
 
   return (
     <Style>
+      <Head>
+
+      </Head>
       <HeroBanner banner={banner[0]} />
-      <div className='as'>
+
+      <div className='search-wrapper'>
         <div className='search-products'>
           <input placeholder='Pesquisar...' type="text" name="" id="" />
           <BsSearch />
         </div>
       </div>
-      
+      <div className='home-categories'>
+        <ul>
+          <li>Perfumes</li>
+          <li>Langeries</li>
+          <li>Sex Shop</li>
+        </ul>
+      </div>
       <Grid>
         {
           products.map((product: any) => <Product key={product._id} product={product}/>)

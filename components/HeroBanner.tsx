@@ -12,12 +12,10 @@ height: 12em;
   display: flex;
   align-items: center;
   width: 100%;
+  justify-content: space-around;
   height: 100%;
   img {
-    position: absolute;
-    top: 50%;
     z-index: 100;
-    left: 50%;
     user-select: none;
   }
   .banner-left-side {
@@ -26,6 +24,7 @@ height: 12em;
       color: #fff;
       font-size: 2rem;
       font-weight: 800;
+      text-transform: uppercase;
     }
     h4 {
       color: #000;
@@ -47,22 +46,24 @@ height: 12em;
       font-family: Montserrat;
       border-radius: .5em;
       margin: .5em 0;
+      
     }
   }
 }
 `;
 
 const HeroBanner = ({ banner }: any) => {
-  const { image } = banner
+  const { image, product, discount, largeText1, buttonText, desc, saleTime } = banner
+  console.log(banner)
   return (
     <Style>
       <div className="hero-banner-container">
         <div className="banner-left-side">
-          <p>langerie top </p>
-          <h4>Vendas de Verão</h4>
-          <h3>PROMO</h3>
+          <p>{product}</p>
+          <h4>{saleTime}</h4>
+          <h3>{largeText1}</h3>
           <Link href="/">
-            <button>Compre Agora</button>
+            <button>{buttonText}</button>
           </Link>
         </div>
         <div className="banner-description">
