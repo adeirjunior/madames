@@ -53,7 +53,6 @@ height: 12em;
 
 const HeroBanner = ({ banner }: any) => {
   const { image, product, discount, largeText1, buttonText, desc, saleTime } = banner
-  console.log(banner)
   return (
     <Style>
       <div className="hero-banner-container">

@@ -22,7 +22,7 @@ const Footer: FC = () => {
   return (
     <Style>
       <p>M'adames &copy; {year}</p>
-      <a target="_blank" href="https://www.instagram.com/_m_adames/">
+      <a target="instagram" href="https://www.instagram.com/_m_adames/">
         <BsInstagram />
       </a>
     </Style>
