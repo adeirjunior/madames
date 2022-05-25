@@ -1,4 +1,4 @@
-import "../global.css";
+import "../style/global.css";
 import type { AppProps } from 'next/app';
 import { Toaster } from 'react-hot-toast';
 import { Layout } from '../components';
