@@ -13,7 +13,7 @@ justify-content: space-between;
 #logo {
   display: flex;
   align-items: center;
-  font-family: 'Parisienne' !important;
+  font-family: 'Parisienne', cursive;
   text-transform: capitalize;
   user-select: none;
   h1 {
