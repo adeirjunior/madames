@@ -10,7 +10,7 @@ border: solid #E4E4E4 1px;
 cursor: pointer;
 div {
 .product-image {
-  border-radius: .5em;
+  user-select: none;
 }
 .product-price {
   margin-top: .25em;

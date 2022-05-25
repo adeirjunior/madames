@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { BsBag, BsPerson, BsArrowLeft } from "react-icons/bs";
 import { useStateContext } from "../global/context/StateContext";
 import Link from "next/link";
+import { Cart } from "./";
 
 const Style = styled.div`
 background-color: #fff;
@@ -14,6 +15,7 @@ justify-content: space-between;
   align-items: center;
   font-family: 'Parisienne' !important;
   text-transform: capitalize;
+  user-select: none;
   h1 {
     font-size: 1.25rem;
     font-weight: 500;
@@ -27,6 +29,7 @@ justify-content: space-between;
   svg {
     width: 25px;
     height: auto;
+    cursor: pointer;
   }
 }
 #nav-options {
@@ -55,7 +58,7 @@ justify-content: space-between;
 `;
 
 const Navbar = ({ path }: any) => {
-  const { totalQuantities, incQty }: any = useStateContext();
+  const { totalQuantities, showCart, setShowCart }: any = useStateContext();
   return (
     <Style>  
       { path === "/" ? 
@@ -66,24 +69,24 @@ const Navbar = ({ path }: any) => {
         </div>
       ) : 
       (
-
-        <Link href="/">
-          <div className="left-arrow">
-            <BsArrowLeft />
-          </div>
-        </Link>
+        <div className="left-arrow" onClick={() => history.back()}>
+          <BsArrowLeft />
+        </div>
       )
         
       }
-      <div id="nav-options">
-        <div className="bag-icon">
+      { showCart && <Cart />}
+      <nav id="nav-options">
+        <div className="bag-icon" onClick={() => setShowCart(true)}>
           <BsBag />
           {totalQuantities > 0 && <span>{totalQuantities}</span>}
         </div>
         <span className="profile-icon">
-          <BsPerson />
+          <Link href="/user">
+            <BsPerson />
+          </Link>
         </span>  
-      </div>
+      </nav>
     </Style>
   )
 }

@@ -5,50 +5,50 @@ export default {
     fields: [
         {
             name: 'image',
-            title: 'Image',
+            title: 'Imagem',
             type: 'image',
             options: {
                 hotspot: true,
             },
         },
         {
-            name: 'buttonText',
-            title: 'ButtonText',
+            name: 'product',
+            title: 'Produto',
             type: 'string',
         },
         {
-            name: 'product',
-            title: 'Product',
+            name: 'buttonText',
+            title: 'Texto do Botão',
             type: 'string',
         },
         {
             name: 'desc',
-            title: 'Desc',
+            title: 'Descrição',
             type: 'string',
         },
         {
             name: 'smallText',
-            title: 'SmallText',
+            title: 'Texto Pequeno',
             type: 'string',
         },
         {
             name: 'midText',
-            title: 'MidText',
+            title: 'Texto Médio',
             type: 'string',
         },
         {
             name: 'largeText1',
-            title: 'LargeText1',
+            title: 'Texto Largo 1',
             type: 'string',
         },
         {
             name: 'largeText2',
-            title: 'LargeText2',
+            title: 'Texto Largo 2',
             type: 'string',
         },
         {
             name: 'discount',
-            title: 'Discount',
+            title: 'Desconto',
             type: 'string',
         },
         {

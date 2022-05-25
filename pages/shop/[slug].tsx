@@ -56,7 +56,6 @@ export const getStaticPaths = async () => {
             slug: product.slug.current
         }
     }))
-    console.log(paths)
     return {
         paths,
         fallback: false

@@ -6,6 +6,7 @@ import { Navbar, Footer } from "./";
 
 const Style = styled.div`
 background-color: #fff;
+overflow: hidden;
 `;
 
 const Layout = ({ children, path }: ChildrenProp) => {

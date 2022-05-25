@@ -11,6 +11,10 @@ const Style = styled.div`
   p {
     font-size: .65rem;
   }
+  a svg {
+    width: 20px;
+    height: auto;
+  }
 `;
 
 const Footer: FC = () => {
