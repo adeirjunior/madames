@@ -15,7 +15,6 @@ height: 12em;
   justify-content: space-around;
   height: 100%;
   img {
-    z-index: 100;
     user-select: none;
   }
   .banner-left-side {

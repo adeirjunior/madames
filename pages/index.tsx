@@ -19,7 +19,7 @@ const Style = styled.div`
     font-size: .8rem;
     display: flex;
     justify-content: center;
-    margin: 1.5em 0;
+    margin: 2.5em 0 1.75em;
     color: #5D5D5D;
     ul {
       display: flex;
