@@ -68,9 +68,10 @@ const HeroBanner = ({ banner }: any) => {
 
         </div>
         <Image 
-        layout="intrinsic"
+        layout="raw"
         sizes="30vw"
         priority
+        alt="ao"
         src={urlFor(image && image.asset._ref).url()} 
         width={120} 
         height={175}

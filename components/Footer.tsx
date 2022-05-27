@@ -5,7 +5,7 @@ import type { FC } from "react";
 const Style = styled.div`
   background-color: #fff;
   display: flex;
-  padding: 1.5em 1em;
+  padding: 4em 1em;
   align-items: center;
   justify-content: space-between;
   p {

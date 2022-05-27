@@ -51,6 +51,7 @@ justify-content: space-between;
       text-align: center;
       font-size: .75rem;
       font-family: Montserrat;
+      user-select: none;
     }
   }
 }
