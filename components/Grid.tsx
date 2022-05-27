@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import type { FC } from "react";
 import type { ChildrenProp } from '../types/types'
 
 const Style = styled.div`
