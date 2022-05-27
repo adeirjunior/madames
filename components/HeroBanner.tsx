@@ -52,15 +52,16 @@ height: 12em;
 `;
 
 const HeroBanner = ({ banner }: any) => {
-  const { image, product, discount, largeText1, buttonText, desc, saleTime } = banner
+  const { image, product, discount, smallText, largeText1, buttonText, desc, saleTime } = banner;
+
   return (
     <Style>
       <div className="hero-banner-container">
         <div className="banner-left-side">
-          <p>{product}</p>
+          <p>{smallText}</p>
           <h4>{saleTime}</h4>
           <h3>{largeText1}</h3>
-          <Link href="/">
+          <Link href={`shop/${product}`}>
             <button>{buttonText}</button>
           </Link>
         </div>

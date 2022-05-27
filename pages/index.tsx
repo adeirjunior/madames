@@ -5,6 +5,7 @@ import { client } from '../lib/client';
 import { HeroBanner, Product } from '../components';
 import Grid from '../components/Grid';
 import { BsSearch } from 'react-icons/bs';
+import { useStateContext } from '../global/context/StateContext';
 
 const Style = styled.div`
   span{
@@ -22,10 +23,14 @@ const Style = styled.div`
     margin: 2.5em 0 1.75em;
     color: #5D5D5D;
     ul {
+      cursor: pointer;
       display: flex;
       flex-wrap: wrap;
       list-style: none;
       li {
+        &:hover{
+          color: #24113E;
+        }
         &:not(:last-child) {
           margin-right: .5em;
         }
@@ -56,6 +61,7 @@ const Style = styled.div`
 `
 
 const Home: NextPage = ({ products, banner }: any) => {
+  const { setCategory }: any = useStateContext();
 
   return (
     <Style>
@@ -72,9 +78,9 @@ const Home: NextPage = ({ products, banner }: any) => {
       </div>
       <div className='home-categories'>
         <ul>
-          <li>Perfumes</li>
-          <li>Langeries</li>
-          <li>Sex Shop</li>
+          <li onClick={() => setCategory("Perfumes")}>Perfumes</li>
+          <li onClick={() => setCategory("Langeries")}>Langeries</li>
+          <li onClick={() => setCategory("Sex Shop")}>Sex Shop</li>
         </ul>
       </div>
       <Grid>

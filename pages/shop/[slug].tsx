@@ -11,7 +11,7 @@ const Style = styled.div`
 `;
 
 const Item: NextPage = ({ product }: any) => {
-    const { image, lowImage } = product;
+    const { image, lowImage, slug } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
     return (
         <Style>
@@ -22,8 +22,8 @@ const Item: NextPage = ({ product }: any) => {
                 placeholder="blur"
                 blurDataURL={urlFor(lowImage.asset._ref).url()}
                 width={150} 
-                height={250} 
-                alt="ao" 
+                height={200} 
+                alt={slug.current}
                 src={urlFor(image && image[0].asset._ref).url()}
                 />
             </div>

@@ -59,14 +59,14 @@ justify-content: space-between;
 `;
 
 const Navbar = ({ path }: any) => {
-  const { totalQuantities, showCart, setShowCart }: any = useStateContext();
+  const { totalQuantities, showCart, setShowCart, category }: any = useStateContext();
   return (
     <Style>  
       { path === "/" ? 
       (
         <div id="logo">
           <h1>m'adames</h1>
-          <span>perfumes</span>
+          <span>{category}</span>
         </div>
       ) : 
       (

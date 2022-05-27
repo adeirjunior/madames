@@ -17,6 +17,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [qty, setQty] = useState(1);
     const [path, setPath] = useState()
+    const [ category, setCategory ] = useState("");
 
 
     const incQty = () => {
@@ -68,7 +69,9 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             setLogo,
             path, 
             setPath,
-            onAdd
+            onAdd,
+            category,
+            setCategory
         }}
         >
             {children}

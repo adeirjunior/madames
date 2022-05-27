@@ -3,7 +3,7 @@ export default {
     title: 'Produto',
     type: 'document',
     fields: [
-      {
+    {
         name: 'image',
         title: 'Imagens',
         type: 'array',
