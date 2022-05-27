@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { urlFor } from "../../lib/client";
 import styled from "styled-components";
+import Head from "next/head";
 import { useStateContext } from "../../global/context/StateContext";
 
 const Style = styled.div`
@@ -11,10 +12,14 @@ const Style = styled.div`
 `;
 
 const Item: NextPage = ({ product }: any) => {
-    const { image, lowImage, slug } = product;
+    const { image, lowImage, slug, name, desc, details } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
     return (
         <Style>
+            <Head>
+                <title>Madames | {name}</title>
+                <meta name="description" content={desc} />
+            </Head>
             <div>
                 <Image
                 layout="responsive"

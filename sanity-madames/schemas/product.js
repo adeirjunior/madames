@@ -44,6 +44,11 @@ export default {
         name: 'details',
         title: 'Detalhes',
         type: 'string'
+    },
+    { 
+        name: 'desc',
+        title: 'Descrição Resumida',
+        type: 'string'
     }
 ]
 }
