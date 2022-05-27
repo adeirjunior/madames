@@ -26,7 +26,7 @@ div {
 interface Prop {
   product: any
 }
-const Product: FC<Prop> = ({ product: {image, name, slug, price} }: Prop) => {
+const Product: FC<Prop> = ({ product: {image, name, slug, price, lowImage} }: Prop) => {
  
   return (
     <Style>
@@ -34,6 +34,10 @@ const Product: FC<Prop> = ({ product: {image, name, slug, price} }: Prop) => {
         <div>
           <Image
           alt={slug?.current}
+          layout="responsive"
+          sizes="25vw"
+          placeholder="blur"
+          blurDataURL={urlFor(lowImage.asset._ref).url()}
           width={250} 
           height={325} 
           src={urlFor(image && image[0].asset._ref).url()}

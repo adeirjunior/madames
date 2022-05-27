@@ -5,9 +5,17 @@ export default {
     fields: [
       {
         name: 'image',
-        title: 'Imagem',
+        title: 'Imagens',
         type: 'array',
         of: [{type: 'image'}],
+        options: {
+            hotspot: true,
+        }
+    },
+    {
+        name: 'lowImage',
+        title: 'Imagem de Baixa Resolução',
+        type: 'image',
         options: {
             hotspot: true,
         }

@@ -67,7 +67,14 @@ const HeroBanner = ({ banner }: any) => {
         <div className="banner-description">
 
         </div>
-        <Image src={urlFor(image && image.asset._ref).url()} width={120} height={175}/>
+        <Image 
+        layout="intrinsic"
+        sizes="30vw"
+        priority
+        src={urlFor(image && image.asset._ref).url()} 
+        width={120} 
+        height={175}
+        />
       </div>
     </Style>
   )

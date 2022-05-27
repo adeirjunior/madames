@@ -11,32 +11,43 @@ const Style = styled.div`
 `;
 
 const Item: NextPage = ({ product }: any) => {
-    const { image } = product;
+    const { image, lowImage } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
     return (
         <Style>
-        <Image width={150} height={250} alt="ao" src={urlFor(image && image[0].asset._ref).url()}/>
-        <div className='quantity'>
-            <h3>Quantity:</h3>
-            <p className='quantity-desc'> 
-                <span className='minus' onClick={decQty}>
-                    <AiOutlineMinus />
-                </span>
-                <span className='num'>
-                    {qty}
-                </span>
-                <span className='plus' onClick={incQty}>
-                    <AiOutlinePlus />
-                </span>
-            </p> 
-        </div>
-        <button 
-        type="button" 
-        className='add-to-cart'
-        onClick={() => onAdd(product, qty)}
-        >
-            Adicionar Ao Carrinho
-        </button>
+            <div>
+                <Image
+                layout="responsive"
+                sizes="30vw"
+                placeholder="blur"
+                blurDataURL={urlFor(lowImage.asset._ref).url()}
+                width={150} 
+                height={250} 
+                alt="ao" 
+                src={urlFor(image && image[0].asset._ref).url()}
+                />
+            </div>
+            <div className='quantity'>
+                <h3>Quantity:</h3>
+                <p className='quantity-desc'> 
+                    <span className='minus' onClick={decQty}>
+                        <AiOutlineMinus />
+                    </span>
+                    <span className='num'>
+                        {qty}
+                    </span>
+                    <span className='plus' onClick={incQty}>
+                        <AiOutlinePlus />
+                    </span>
+                </p> 
+            </div>
+            <button 
+            type="button" 
+            className='add-to-cart'
+            onClick={() => onAdd(product, qty)}
+            >
+                Adicionar Ao Carrinho
+            </button>
         </Style>
     )
 };
