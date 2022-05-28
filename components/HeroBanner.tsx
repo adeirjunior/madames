@@ -49,6 +49,51 @@ height: 12em;
       user-select: none;
     }
   }
+  .image-and-discount {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    .label {
+      display: none;
+      position: absolute;
+      left: -25px;
+      top: 15px;
+      padding: .2em .5em;
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 800;
+      background-color: #EC3535;
+      z-index: 0;
+    }
+    img {
+      z-index: 99;
+    }
+  }
+  .banner-description {
+    display: none;
+    font-size: .75rem;
+    text-align: end;
+    h5 {
+      font-weight: 500;
+    }
+    p {
+      margin-top: 1em;
+      font-size: .6rem;
+    }
+  }
+
+  @media only screen and (min-width: 720px) {
+    .banner-description {
+      display: block;
+    }
+  }
+}
+
+@media only screen and (min-width: 425px) {
+  .hero-banner-container .image-and-discount .label {
+    display: block; 
+  }
 }
 `;
 
@@ -66,18 +111,24 @@ const HeroBanner = ({ banner }: any) => {
             <button>{buttonText}</button>
           </Link>
         </div>
-        <div className="banner-description">
-
+        <div className="image-and-discount">
+          <Image 
+          layout="raw"
+          sizes="30vw"
+          priority
+          alt="ao"
+          src={urlFor(image && image.asset._ref).url()} 
+          width={120} 
+          height={175}
+          />
+          <span className="label">
+            {discount}%
+          </span>
         </div>
-        <Image 
-        layout="raw"
-        sizes="30vw"
-        priority
-        alt="ao"
-        src={urlFor(image && image.asset._ref).url()} 
-        width={120} 
-        height={175}
-        />
+        <div className="banner-description">
+          <h5>Descrição</h5>
+          <p>{desc}</p>
+        </div>
       </div>
     </Style>
   )
