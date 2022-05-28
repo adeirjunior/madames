@@ -57,10 +57,10 @@ const Item: NextPage = ({ product }: any) => {
             <div className="image-gallery">
                 <Zoom 
                 height={200} 
-                src={urlFor(image && image[0].asset._ref).url()} 
+                src={urlFor(image ? image[0].asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()} 
                 alt={slug.current} 
                 width={150} 
-                blurDataURL={urlFor(lowImage.asset._ref).url()} 
+                blurDataURL={urlFor(lowImage ? lowImage.asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()} 
                 layout="responsive" 
                 sizes="30vw" 
                 placeholder="blur"
