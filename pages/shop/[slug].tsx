@@ -6,9 +6,44 @@ import { urlFor } from "../../lib/client";
 import styled from "styled-components";
 import Head from "next/head";
 import { useStateContext } from "../../global/context/StateContext";
+import Zoom from 'next-image-zoom';
 
 const Style = styled.div`
     background-color: #fff;
+    .image-gallery {
+        width: 150px;
+        
+    }
+    .quantity {
+        .quantity-desc {
+            display: grid;
+            grid-template-columns: repeat(3, 25px);
+            gap: 25px;
+            grid-template-rows: 25px;
+            .minus, .plus {
+                cursor: pointer;
+            }
+            .num {
+                cursor: default;
+                user-select: none;
+            }
+        }
+    }
+    .add-to-cart {
+        border: none;
+        padding: 1em 0;
+        color: #fff;
+        width: 100%;
+        font-size: .9rem;
+        max-width: 280px;
+        background-color: #24113E;
+        font-family: Montserrat;
+        text-transform: uppercase;
+        font-weight: 800;
+        cursor: pointer;
+        margin: 1.5em 0;
+        user-select: none;
+    }
 `;
 
 const Item: NextPage = ({ product }: any) => {
@@ -20,16 +55,16 @@ const Item: NextPage = ({ product }: any) => {
                 <title>Madames | {name}</title>
                 <meta name="description" content={desc} />
             </Head>
-            <div>
-                <Image
-                layout="responsive"
-                sizes="30vw"
-                placeholder="blur"
-                blurDataURL={urlFor(lowImage.asset._ref).url()}
-                width={150} 
+            <div className="image-gallery">
+                <Zoom 
                 height={200} 
-                alt={slug.current}
-                src={urlFor(image && image[0].asset._ref).url()}
+                src={urlFor(image && image[0].asset._ref).url()} 
+                alt={slug.current} 
+                width={150} 
+                blurDataURL={urlFor(lowImage.asset._ref).url()} 
+                layout="responsive" 
+                sizes="30vw" 
+                placeholder="blur"
                 />
             </div>
             <div className='quantity'>

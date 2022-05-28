@@ -42,10 +42,11 @@ height: 12em;
       font-size: .8rem;
       padding: .5em 1em;
       color: #fff;
+      cursor: pointer;
       font-family: Montserrat;
       border-radius: .5em;
       margin: .5em 0;
-      
+      user-select: none;
     }
   }
 }
