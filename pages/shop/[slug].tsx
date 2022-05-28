@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { client } from "../../lib/client";
-import Image from "next/image";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { urlFor } from "../../lib/client";
 import styled from "styled-components";
