@@ -15,6 +15,10 @@ gap: 1em;
 grid-template-columns: repeat(4, 125px);
 gap: 1em;
 }
+@media only screen and (min-width: 900px) {
+    grid-template-columns: repeat(5, 125px);
+    gap: 1em;
+}
 `;
 
 const Grid = ({ children }: ChildrenProp) => {

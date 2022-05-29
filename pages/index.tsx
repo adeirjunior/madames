@@ -45,6 +45,7 @@ const Style = styled.div`
       border: #E4E4E4 solid 1px;
       border-radius: 9px;
       padding: .3em .8em;
+      background-color: #fff;
       display: flex;
       input {
         border: none;

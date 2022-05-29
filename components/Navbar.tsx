@@ -59,7 +59,7 @@ justify-content: space-between;
 `;
 
 const Navbar = ({ path }: any) => {
-  const { totalQuantities, showCart, setShowCart, category }: any = useStateContext();
+  const { totalQuantities, setShowCart, category }: any = useStateContext();
   return (
     <Style>  
       { path === "/" ? 
@@ -76,7 +76,7 @@ const Navbar = ({ path }: any) => {
       )
         
       }
-      { showCart && <Cart />}
+      <Cart />
       <nav id="nav-options">
         <div className="bag-icon" onClick={() => setShowCart(true)}>
           <BsBag />

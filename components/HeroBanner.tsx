@@ -2,13 +2,13 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "../lib/client";
+import { motion } from "framer-motion";
 
 const Style = styled.div`
 background: linear-gradient(to bottom, rgba(236, 71, 142, 1), rgba(236, 71, 142, 0));
 width: 100%;
-height: 12em;
+height: 200px;
 .hero-banner-container {
-  padding: 0 1em;
   display: flex;
   align-items: center;
   width: 100%;
@@ -54,6 +54,8 @@ height: 12em;
     position: relative;
     justify-content: center;
     align-items: center;
+    cursor: default;
+    opacity: 0;
     .label {
       display: none;
       position: absolute;
@@ -82,19 +84,103 @@ height: 12em;
       font-size: .6rem;
     }
   }
-
-  @media only screen and (min-width: 720px) {
-    .banner-description {
-      display: block;
-    }
-  }
 }
 
 @media only screen and (min-width: 425px) {
-  .hero-banner-container .image-and-discount .label {
-    display: block; 
+  .hero-banner-container {
+    .image-and-discount {
+      .label {
+        display: block; 
+      }
+      img {
+        width: 150px;
+        height: auto;
+      }
+    }
+    .banner-left-side {
+      p {
+        font-size: .85rem;
+      }
+      h4 {
+        font-size: 1rem;
+      }
+      h3 {
+        font-size: 3rem;
+      }
+      button {
+        font-size: 1rem;
+      }
+    }
   }
 }
+@media only screen and (min-width: 720px) {
+    border-radius: 1em; 
+    margin-bottom: 2em;
+    .hero-banner-container .banner-description {
+      display: block;
+    } 
+  }
+  @media only screen and (min-width: 900px) {
+    margin-bottom: 4em;
+    height: 300px;
+    .hero-banner-container {
+      .banner-description {
+        h5 {
+          font-size: .7rem;
+        }
+        p {
+          font-size: .65rem;
+        }
+      }
+      .image-and-discount {
+        img {
+          width: 200px;
+          height: auto;
+        }
+        .label {
+          top: 2em;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 1440px) {
+    border-radius: 2em; 
+    height: 400px;
+    .hero-banner-container {
+      .banner-left-side {
+        h3 {
+          font-size: 6rem;
+        }
+        h4 {
+          font-size: 2.25rem;
+        }
+        p {
+          font-size: 1rem;
+          font-weight: 500;
+        }
+      }
+      .banner-description {
+        h5 {
+          font-size: .85rem;
+          font-weight: 600;
+        }
+        p {
+          font-size: .7rem;
+          font-weight: 500;
+        }
+      }
+      .image-and-discount {
+        img {
+          width: 350px;
+          height: auto;
+          padding-bottom: 2em;
+        }
+        .label {
+          top: 6em;
+        }
+      }
+    }
+  }
 `;
 
 const HeroBanner = ({ banner }: any) => {
@@ -111,7 +197,10 @@ const HeroBanner = ({ banner }: any) => {
             <button>{buttonText}</button>
           </Link>
         </div>
-        <div className="image-and-discount">
+        <motion.div 
+        animate={{ opacity: 1, x: 10 }}
+        transition={{ duration: .75 }}
+        className="image-and-discount">
           <Image 
           layout="raw"
           sizes="30vw"
@@ -124,7 +213,7 @@ const HeroBanner = ({ banner }: any) => {
           <span className="label">
             {discount}%
           </span>
-        </div>
+        </motion.div>
         <div className="banner-description">
           <h5>Descrição</h5>
           <p>{desc}</p>
