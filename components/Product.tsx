@@ -10,22 +10,27 @@ padding: .75em;
 border: solid #E4E4E4 1px;
 cursor: pointer;
 div {
-.product-image {
-  user-select: none;
+  .product-image {
+    user-select: none;
+  }
+  .product-price {
+    margin-top: .25em;
+  }
+  .product-name {
+    font-size: .65rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
-.product-price {
-  margin-top: .25em;
-}
-.product-name {
-  font-size: .65rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+&:hover .product-name {
+  overflow: auto;
+  text-overflow: clip;
+  white-space: normal;
 }
 @media only screen and (min-width: 540px) {
 
-  
+
 }
 `;
 interface Prop {
