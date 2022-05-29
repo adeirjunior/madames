@@ -19,6 +19,9 @@ height: 200px;
   }
   .banner-left-side {
     float: left;
+    h3, h4, p {
+      opacity: 0;
+    } 
     h3 {
       color: #fff;
       font-size: 2rem;
@@ -76,6 +79,9 @@ height: 200px;
     display: none;
     font-size: .75rem;
     text-align: end;
+    h5, p {
+      opacity: 0;
+    }
     h5 {
       font-weight: 500;
     }
@@ -190,16 +196,16 @@ const HeroBanner = ({ banner }: any) => {
     <Style>
       <div className="hero-banner-container">
         <div className="banner-left-side">
-          <p>{smallText}</p>
-          <h4>{saleTime}</h4>
-          <h3>{largeText1}</h3>
+          <motion.p animate={{opacity: 1, transition: { delay: .2}}}>{smallText}</motion.p>
+          <motion.h4 animate={{opacity: 1, transition: { delay: .1}}}>{saleTime}</motion.h4>
+          <motion.h3 animate={{opacity: 1}}>{largeText1}</motion.h3>
           <Link href={`shop/${product}`}>
             <button>{buttonText}</button>
           </Link>
         </div>
         <motion.div 
         animate={{ opacity: 1, x: 10 }}
-        transition={{ duration: .75 }}
+        transition={{ duration: .5 }}
         className="image-and-discount">
           <Image 
           layout="raw"
@@ -215,8 +221,8 @@ const HeroBanner = ({ banner }: any) => {
           </span>
         </motion.div>
         <div className="banner-description">
-          <h5>Descrição</h5>
-          <p>{desc}</p>
+          <motion.h5 animate={{opacity: 1, x: 10}}>Descrição</motion.h5>
+          <motion.p animate={{opacity: 1, x: 10, transition: { delay: .1}}}>{desc}</motion.p>
         </div>
       </div>
     </Style>
