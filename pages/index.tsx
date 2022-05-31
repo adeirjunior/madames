@@ -2,9 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
 import { client } from '../lib/client';
-import { HeroBanner, Product } from '../components';
-import Grid from '../components/Grid';
-import { BsSearch } from 'react-icons/bs';
+import { HeroBanner, Product, SearchBar, Grid } from '../components';
 import { useStateContext } from '../global/context/StateContext';
 
 const Style = styled.div`
@@ -37,29 +35,9 @@ const Style = styled.div`
       }
     }
   }
-  .search-wrapper{
-    display: flex;
-    justify-content: center;
-    margin: 1em 0;
-    .search-products {
-      border: #E4E4E4 solid 1px;
-      border-radius: 9px;
-      padding: .3em .8em;
-      background-color: #fff;
-      display: flex;
-      input {
-        border: none;
-        font-family: Montserrat;
-        outline: none;
-        padding: 0 .5em;
-      }
-      svg {
-        fill: #5D5D5D;
-      }
-    }
-  }
-  
-`
+
+
+`;
 
 const Home: NextPage = ({ products, banner }: any) => {
   const { setCategory }: any = useStateContext();
@@ -71,13 +49,7 @@ const Home: NextPage = ({ products, banner }: any) => {
         <meta name="description" content="M'adames é uma loja dedicada a venda de produtos focados a vida íntima feminina" />
       </Head>
       <HeroBanner banner={banner[0]} />
-
-      <div className='search-wrapper'>
-        <div className='search-products'>
-          <input placeholder='Pesquisar...' type="text" name="" id="" />
-          <BsSearch />
-        </div>
-      </div>
+      <SearchBar />
       <div className='home-categories'>
         <ul>
           <li onClick={() => setCategory("Perfumes")}>Perfumes</li>

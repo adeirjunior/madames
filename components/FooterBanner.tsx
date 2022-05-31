@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import type { FC } from "react";
+import Div from "./StyledDivComponent";
 
-const Style = styled.div`
+const Style = styled(Div)`
 background-color: red;
 `;
 
-const FooterBanner: FC = () => {
+const FooterBanner = () => {
   return (
     <Style>
       FooterBanner

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { BsInstagram } from "react-icons/bs";
-import type { FC } from "react";
+import Div from "./StyledDivComponent";
 
-const Style = styled.div`
+const Style = styled(Div)`
   background-color: #fff;
   display: flex;
   padding: 4em 1em;
@@ -17,7 +17,7 @@ const Style = styled.div`
   }
 `;
 
-const Footer: FC = () => {
+const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <Style>

@@ -3,8 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "../lib/client";
 import { motion } from "framer-motion";
+import Div from "./StyledDivComponent";
 
-const Style = styled.div`
+const Style = styled(Div)`
 background: linear-gradient(to bottom, rgba(236, 71, 142, 1), rgba(236, 71, 142, 0));
 width: 100%;
 height: 200px;
@@ -152,6 +153,7 @@ height: 200px;
   @media only screen and (min-width: 1440px) {
     border-radius: 2em; 
     height: 400px;
+    margin-bottom: 8em;
     .hero-banner-container {
       .banner-left-side {
         h3 {

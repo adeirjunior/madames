@@ -4,8 +4,9 @@ import Image from "next/image";
 import { urlFor } from "../lib/client";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Div from "./StyledDivComponent";
 
-const Style = styled.div`
+const Style = styled(Div)`
 padding: .75em;
 border: solid #E4E4E4 1px;
 cursor: pointer;
@@ -18,6 +19,7 @@ div {
   }
   .product-name {
     font-size: .65rem;
+    margin-top: 1em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -40,7 +42,7 @@ const Product: FC<Prop> = ({ product: {image, name, slug, price, lowImage} }: Pr
  
   return (
     <motion.div
-    whileHover={{ scale: 1.075 }} 
+    whileHover={{ scale: 1.05 }} 
     >
       <Style>
         <Link href={`/shop/${slug?.current}`}>

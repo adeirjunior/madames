@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { BsBag, BsPerson, BsArrowLeft } from "react-icons/bs";
 import { useStateContext } from "../global/context/StateContext";
 import Link from "next/link";
+import Div from "./StyledDivComponent";
 import { Cart } from "./";
 
-const Style = styled.div`
+const Style = styled(Div)`
 background-color: #fff;
 padding: .75em .75em;
 display: flex;
