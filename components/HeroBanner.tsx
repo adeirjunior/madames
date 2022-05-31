@@ -177,7 +177,7 @@ height: 200px;
       }
       .image-and-discount {
         img {
-          width: 350px;
+          width: 375px;
           height: auto;
           padding-bottom: 2em;
         }
