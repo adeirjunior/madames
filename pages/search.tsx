@@ -12,3 +12,4 @@ const Search = () => {
         </Styled>
     )
 } 
+export default Search;
