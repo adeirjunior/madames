@@ -48,6 +48,7 @@ justify-content: space-between;
       background-color: #fff;
       border: solid black 1px;
       width: 1.35em;
+      cursor: pointer;
       height: 1.35em;
       text-align: center;
       font-size: .75rem;
