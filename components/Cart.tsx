@@ -101,7 +101,7 @@ const Cart: FC = () => {
             (
               <div className="product">
                 <Link href={`/shop/${item?.slug.current}`}>
-                  <div className="image">
+                  <div onClick={() => setShowCart(false)} className="image">
                     <Image 
                     layout="responsive"
                     width={50}
