@@ -77,9 +77,11 @@ const Navbar = ({ path }: any) => {
         </div>
       ) : 
       (
-        <div className="left-arrow" onClick={() => history.back()}>
-          <BsArrowLeft />
-        </div>
+        <Link href="/">
+          <div className="left-arrow">
+            <BsArrowLeft />
+          </div>
+        </Link>
       )
         
       }

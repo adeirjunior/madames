@@ -13,12 +13,13 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     const [logo, setLogo] = useState("Perfumes");
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([] as CartItemsProps[]);
-    const [totalPrice, setTotalPrice] = useState();
+    const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [qty, setQty] = useState(1);
     const [path, setPath] = useState()
     const [ category, setCategory ] = useState("");
 
+    let foundProduct: any;
 
     const incQty = () => {
         setQty((prev) => prev + 1);
@@ -54,6 +55,31 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
         }
         toast.success(`${qty} ${product.name} Adicionado Ao Carrinho`);
     }
+    const remove = (id: string) => {
+        foundProduct = cartItems.find(item => item._id === id);
+        const newCartItems = cartItems.filter(item => item._id !== id);
+
+        setTotalPrice(prev => prev - foundProduct.price * foundProduct.quantity);
+        setTotalQuantities(prev => prev - foundProduct.quantity);
+        setCartItems(newCartItems);
+    }
+
+    const toggleCartItemQuantity = (id: string, value: string) => {
+        foundProduct = cartItems.find(item => item._id === id);
+        const newCartItems = cartItems.filter(item => item._id !== id);
+        if (value === 'inc') {
+            setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1}]);
+            setTotalPrice(prev => prev + foundProduct.price);
+            setTotalQuantities(prev => prev + 1);
+
+        } else if( value === 'dec' ) {
+            if (foundProduct.quantity > 1 ) {
+                setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1}]);
+                setTotalPrice(prev => prev - foundProduct.price);
+                setTotalQuantities(prev => prev - 1);
+            }
+        }
+    }
     return (
         <Context.Provider
         value={{
@@ -71,7 +97,9 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             setPath,
             onAdd,
             category,
-            setCategory
+            setCategory,
+            remove,
+            toggleCartItemQuantity
         }}
         >
             {children}

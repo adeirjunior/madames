@@ -6,6 +6,7 @@ interface Props{
     color?: string;
     children?: any;
     active?: boolean;
+    onClick?: any;
 }
 const Div:FC <Props> = ({className, children}) => {
     return (
