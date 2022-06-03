@@ -46,7 +46,7 @@ const SearchBar = () => {
         <Styled>
             <div className='search-products'>
             <input placeholder='Pesquisar...' type="text"/>
-            <BsSearch />
+              <BsSearch />
             </div>
         </Styled>
     )

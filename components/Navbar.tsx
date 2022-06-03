@@ -60,7 +60,10 @@ justify-content: space-between;
 @media only screen and (min-width: 1440px) {
   #logo{
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+    }
+    span {
+      font-size: 1rem;
     }
   }
 }
