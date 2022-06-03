@@ -21,11 +21,12 @@ const Style = styled.div`
     margin: 2.5em 0 1.75em;
     color: #5D5D5D;
     ul {
-      cursor: pointer;
+      
       display: flex;
       flex-wrap: wrap;
       list-style: none;
       li {
+        cursor: pointer;
         &:hover{
           color: #24113E;
         }
@@ -35,8 +36,19 @@ const Style = styled.div`
       }
     }
   }
-
-
+@media only screen and (min-width: 1440px) {
+  .home-categories {
+    margin-bottom: 4em;
+    font-size: 1.25rem;
+    ul {
+      li {
+        &:not(:last-child) {
+          margin-right: 1.5em;
+        }
+      }
+    }
+  }
+}
 `;
 
 const Home: NextPage = ({ products, banner }: any) => {

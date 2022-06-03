@@ -5,12 +5,13 @@ import Div from "./StyledDivComponent";
 const Styled = styled(Div)` 
 display: flex;
 justify-content: center;
-margin: 1em 0;
+margin: 1em 0 5em;
   .search-products {
     border: #E4E4E4 solid 1px;
     border-radius: 9px;
     padding: .3em .8em;
     background-color: #fff;
+    align-items: center;
     display: flex;
     input {
       border: none;
@@ -20,8 +21,24 @@ margin: 1em 0;
     }
     svg {
       fill: #5D5D5D;
+      cursor: pointer;
     }
   }
+
+@media only screen and (min-width: 1440px) {
+  .search-products {
+    border-radius: .8em;
+    padding: .5em 3em ;
+    input {
+      font-size: 1.5rem;
+      width: 700px;
+    }
+    svg {
+      width: 30px;
+      height: auto;
+    }
+  }
+}
 `;
 
 const SearchBar = () => {

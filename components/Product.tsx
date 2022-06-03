@@ -10,9 +10,12 @@ const Style = styled(Div)`
 padding: .75em;
 border: solid #E4E4E4 1px;
 cursor: pointer;
-div {
-  .product-image {
+transition: box-shadow .2s;
+background-color: #fff;
+.product {
+  img {
     user-select: none;
+    display: none;
   }
   .product-price {
     margin-top: .25em;
@@ -25,14 +28,28 @@ div {
     white-space: nowrap;
   }
 }
-&:hover .product-name {
+&:hover {
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, .2);
+  .product-name {
   overflow: auto;
   text-overflow: clip;
   white-space: normal;
 }
+}
 @media only screen and (min-width: 540px) {
 
 
+}
+@media only screen and (min-width: 1440px) {
+
+.product {
+  .product-price {
+    font-size: 1.2rem;
+  }
+  .product-name {
+    font-size: .8rem;
+  }
+}
 }
 `;
 interface Prop {
@@ -46,7 +63,7 @@ const Product: FC<Prop> = ({ product: {image, name, slug, price, lowImage} }: Pr
     >
       <Style>
         <Link href={`/shop/${slug?.current}`}>
-          <div>
+          <div className="product">
             <Image
             alt={slug?.current}
             layout="responsive"
@@ -56,7 +73,6 @@ const Product: FC<Prop> = ({ product: {image, name, slug, price, lowImage} }: Pr
             width={250} 
             height={325} 
             src={urlFor(image ? image[0].asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()}
-            className="product-image"
             />
             <p className="product-name">{name}</p>
             <p className="product-price">R${price}</p>

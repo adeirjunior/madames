@@ -4,6 +4,7 @@ import Div from "./StyledDivComponent";
 
 const Style = styled(Div)`
 display: grid;
+position: relative;
 grid-template-columns: repeat(2, 125px);
 place-content: center;
 gap: .5em;
