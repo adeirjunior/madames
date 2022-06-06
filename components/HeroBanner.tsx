@@ -65,6 +65,7 @@ height: 200px;
       position: absolute;
       left: -25px;
       top: 15px;
+      user-select: none;
       padding: .2em .5em;
       font-size: 1.5rem;
       color: #fff;
@@ -169,11 +170,11 @@ height: 200px;
       }
       .banner-description {
         h5 {
-          font-size: .85rem;
+          font-size: .9rem;
           font-weight: 600;
         }
         p {
-          font-size: .7rem;
+          font-size: .8rem;
           font-weight: 500;
         }
       }
@@ -184,7 +185,9 @@ height: 200px;
           padding-bottom: 2em;
         }
         .label {
-          top: 6em;
+          top: 4em;
+          font-size: 2rem;
+          left: .9em;
         }
       }
     }
