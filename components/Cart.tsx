@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FC } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { BsArrowLeft } from "react-icons/bs";
+import { BsArrowLeft, BsBagDash } from "react-icons/bs";
 import { useStateContext } from "../global/context/StateContext";
 import Div from "./StyledDivComponent";
 import { urlFor } from "../lib/client";
@@ -29,6 +29,12 @@ z-index: 99999999999;
     border: none;
     background-color: #fff;
     cursor: pointer;
+    p {
+      margin-left: 1em;
+      span:last-child {
+        margin-left: .75em;
+      }
+    }
     svg {
       width: 25px;
       height: auto;
@@ -57,6 +63,24 @@ z-index: 99999999999;
     }
   }
   
+}
+.empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  h3{
+    margin-top: 1em;
+    font-weight: 600;
+    user-select: none;
+  }
+  .emptyBag {
+    svg {
+      width: 100px;
+      height: auto;
+    }
+  }
 }
 @media only screen and (min-width: 425px) {
   max-width: 425px;
@@ -87,8 +111,11 @@ const Cart: FC = () => {
       <div className="heading-container">
         <button type="button" onClick={() => setShowCart(false)} className="heading">
           <BsArrowLeft />
-          <span>Seu Carrinho</span>
-          <span>({totalQuantities} items)</span>
+          <p>
+            <span>Seu Carrinho</span>
+            <span>({totalQuantities} {totalQuantities === 1 ? "item" : "items"})</span>
+          </p>
+          
         </button>
       </div>
       { 
@@ -131,7 +158,10 @@ const Cart: FC = () => {
         
       ) : 
       (
-        <div>
+        <div className="empty">
+          <div className="emptyBag">
+            <BsBagDash />
+          </div>
           <h3>Empty</h3>
         </div>
       )
