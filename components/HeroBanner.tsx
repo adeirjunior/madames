@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Div from "./StyledDivComponent";
 
 const Style = styled(Div)`
-background: linear-gradient(to bottom, rgba(236, 71, 142, 1), rgba(236, 71, 142, 0));
+background: linear-gradient(to bottom, rgb(236, 71, 142), rgba(236, 71, 142, 0));
 width: 100%;
 height: 200px;
 .hero-banner-container {

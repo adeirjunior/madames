@@ -10,12 +10,15 @@ const Style = styled(Div)`
 padding: .75em;
 border: solid #E4E4E4 1px;
 cursor: pointer;
-transition: box-shadow .2s;
+transition: box-shadow .2s, border-color .2s;
 background-color: #fff;
 .product {
   img {
     user-select: none;
     display: none;
+  }
+  .product-name, .product-price {
+    transition: color .2s;
   }
   .product-price {
     margin-top: .25em;
@@ -29,12 +32,12 @@ background-color: #fff;
   }
 }
 &:hover {
-  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, .2);
-  .product-name {
-  overflow: auto;
-  text-overflow: clip;
-  white-space: normal;
-}
+  border-color: #ec478e;
+  .product {
+    .product-price ,.product-name {
+      color: #ec478e;
+    }
+  }
 }
 @media only screen and (min-width: 540px) {
 
