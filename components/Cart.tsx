@@ -43,7 +43,7 @@ z-index: 99999999999;
 }
 .buy-bar {
   width: 100%;
-  position: fixed;
+  position: absolute;
   font-family: Montserrat;
   bottom: 0;
   .buy-bar-container {
