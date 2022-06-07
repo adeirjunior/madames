@@ -46,7 +46,7 @@ const Style = styled.div`
 `;
 
 const Item: NextPage = ({ product }: any) => {
-    const { image, lowImage, slug, name, desc, details } = product;
+    const { image, lowImage, slug, name, desc, details, price } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
     return (
         <Style>
@@ -66,6 +66,7 @@ const Item: NextPage = ({ product }: any) => {
                 placeholder="blur"
                 />
             </div>
+            <div>R${price}</div>
             <div className='quantity'>
                 <h3>Quantity:</h3>
                 <p className='quantity-desc'> 

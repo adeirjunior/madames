@@ -68,14 +68,26 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
         foundProduct = cartItems.find(item => item._id === id);
         const newCartItems = cartItems.filter(item => item._id !== id);
         if (value === 'inc') {
-            setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1}]);
-            setTotalPrice(prev => prev + foundProduct.price);
+            setCartItems([{ ...foundProduct, quantity: foundProduct.quantity + 1}, ...newCartItems]);
+            setTotalPrice((prev: number) => {
+                const math: number = prev + foundProduct.price;
+                const str: string[] = String(math).split('.');
+                const decimalPart: string = str[1]?.substr(0, 2) ?? '00'; 
+                const newStr: string = `${str[0]}.${decimalPart}`;
+                return Number(newStr);
+            });
             setTotalQuantities(prev => prev + 1);
 
         } else if( value === 'dec' ) {
             if (foundProduct.quantity > 1 ) {
-                setCartItems([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1}]);
-                setTotalPrice(prev => prev - foundProduct.price);
+                setCartItems([{ ...foundProduct, quantity: foundProduct.quantity - 1}, ...newCartItems]);
+                setTotalPrice((prev: number) => {
+                    const math: number = prev - foundProduct.price;
+                    const str: string[] = String(math).split('.');
+                    const decimalPart: string = str[1]?.substr(0, 2) ?? '00'; 
+                    const newStr: string = `${str[0]}.${decimalPart}`;
+                    return Number(newStr);
+                });
                 setTotalQuantities(prev => prev - 1);
             }
         }

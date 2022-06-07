@@ -41,25 +41,84 @@ z-index: 99999999999;
     }
   }
 }
+.buy-bar {
+  width: 100%;
+  position: fixed;
+  font-family: Montserrat;
+  bottom: 0;
+  .buy-bar-container {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    p {
+      font-size: .7rem;
+      margin-right: 1em;
+      span {
+        font-size: .85rem;
+        font-weight: 500;
+      }
+    }
+    button {
+      background-color: #24113E;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      padding: .5em 1em;
+      border-radius: .5em;
+    }
+  }
+}
 .product-container {
+  display: grid;
+  gap: 1em;
+  margin: 1em 0;
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  height: auto;
+  background-color: #E4E4E4;
   .product {
     display: grid;
-    margin-bottom: 2em;
+    padding: 1em 0;
     place-content: center;
-    gap: 2em;
-    grid-template-columns: repeat(2, 150px);
+    background-color: #fff;
+    grid-template-columns: repeat(2, 140px);
     .image {
       cursor: pointer;
-      max-width: 200px;
+      max-width: 175px;
       height: auto;
+      user-select: none;
+      padding: 1em;
     }
     .details {
       display: flex;
+      justify-content: space-around;
       flex-direction: column;
+      .product-variant {
+        font-size: .85rem;
+        font-weight: 500;
+      }
+      .product-name {
+        font-size: 1.25rem;
+      }
+      .product-quantity {
+        .minus, .plus {
+          padding: .2em .5em;
+          cursor: pointer;
+        }
+        .minus, .plus, .enum {
+          border: black solid 1px;
+        }
+        .minus {
+          border-right: none;
+        }
+        .plus {
+          border-left: none;
+        }
+        .enum {
+          padding: .2em 1.5em;
+          user-select: none;
+          
+        }
+      }
     }
   }
   
@@ -85,6 +144,12 @@ z-index: 99999999999;
 @media only screen and (min-width: 425px) {
   max-width: 425px;
   border-left: 2px solid #24113e;
+}
+@media only screen and (min-width: 375px) {
+  .product-container .product {
+    gap: 1em;
+    grid-template-columns: repeat(2, 175px);
+  }
 }
 `;
 const Background = styled(Div)`
@@ -123,9 +188,9 @@ const Cart: FC = () => {
         <>
           <div className="product-container">
             {
-            cartItems.map((item: any) => 
+            cartItems.map((item: any, index: any) => 
             (
-              <div className="product">
+              <div key={index} className="product">
                 <Link href={`/shop/${item?.slug.current}`}>
                   <div onClick={() => setShowCart(false)} className="image">
                     <Image 
@@ -138,9 +203,10 @@ const Cart: FC = () => {
                   </div>  
                 </Link> 
                 <div className="details">
-                  <h4>{item?.name}</h4>
-                  <h3>R${item?.price}</h3>
-                  <div className="pruduct-quantity">
+                  <h4 className="product-price">{item?.name}</h4>
+                  <h4 className="product-variant">Variação:</h4>
+                  <h3 className="product-name">R${item?.price}</h3>
+                  <div className="product-quantity">
                     <span className="minus" onClick={() => toggleCartItemQuantity(item?._id, 'dec')}><AiOutlineMinus /></span>
                     <span className="enum">{item?.quantity}</span>
                     <span className="plus" onClick={() => toggleCartItemQuantity(item?._id, 'inc')}><AiOutlinePlus /></span>
@@ -150,8 +216,11 @@ const Cart: FC = () => {
             ))
             }
           </div>
-          <div>
-            R${totalPrice}
+          <div className="buy-bar">
+            <div className="buy-bar-container">
+              <p>Sub-total <span>R$ {totalPrice}</span></p>
+              <button>Continuar</button>
+            </div>
           </div>
         </>
         
