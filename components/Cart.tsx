@@ -80,7 +80,7 @@ z-index: 99999999999;
   margin: 1em 0;
   overflow-y: scroll;
   width: 100%;
-  height: auto;
+  height: -webkit-fill-available;
   background-color: #E4E4E4;
   .product {
     display: grid;
