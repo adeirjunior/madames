@@ -162,7 +162,7 @@ const Cart: FC = () => {
           <div className="emptyBag">
             <BsBagDash />
           </div>
-          <h3>Empty</h3>
+          <h3>Vazio</h3>
         </div>
       )
       
