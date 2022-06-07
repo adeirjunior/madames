@@ -31,7 +31,7 @@ const Style = styled.div`
           color: #24113E;
         }
         &:not(:last-child) {
-          margin-right: .5em;
+          margin-right: 1em;
         }
       }
     }

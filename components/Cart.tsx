@@ -69,6 +69,7 @@ z-index: 99999999999;
       border: none;
       padding: .5em 1em;
       border-radius: .5em;
+      user-select: none;
       cursor: pointer;
     }
   }
