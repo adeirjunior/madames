@@ -44,7 +44,7 @@ z-index: 99999999999;
 }
 .buy-bar {
   width: 100%;
-  position: absolute;
+  position: fixed;
   font-family: Montserrat;
   box-shadow: 0px -10px 40px rgba(0, 0, 0, 0.1);
   background-color: #fff;
