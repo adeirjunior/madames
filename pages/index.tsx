@@ -52,8 +52,14 @@ const Style = styled.div`
 `;
 
 const Home: NextPage = ({ products, banner }: any) => {
-  const { setCategory }: any = useStateContext();
+  const { setCategory, category }: any = useStateContext();
 
+  const allProducts = () => products.map((product: any) => <Product key={product._id} product={product}/>);
+  const filteredProducts = () => {
+    const filter = products.filter((product: any) => product.tags[0].value == category)
+    return filter.map((product: any) => <Product key={product._id} product={product}/>);
+  }
+  filteredProducts()
   return (
     <Style>
       <Head>
@@ -64,15 +70,13 @@ const Home: NextPage = ({ products, banner }: any) => {
       <SearchBar />
       <div className='home-categories'>
         <ul>
-          <li onClick={() => setCategory("Perfumes")}>Perfumes</li>
-          <li onClick={() => setCategory("Langeries")}>Langeries</li>
-          <li onClick={() => setCategory("Sex Shop")}>Sex Shop</li>
+          <li onClick={() => setCategory((prev: string) => prev === "perfumes" ? "" : "perfumes")}>Perfumes</li>
+          <li onClick={() => setCategory((prev: string) => prev === "langeries" ? "" : "langeries")}>Langeries</li>
+          <li onClick={() => setCategory((prev: string) => prev === "sexShop" ? "" : "sexShop")}>Sex Shop</li>
         </ul>
       </div>
       <Grid>
-        {
-          products.map((product: any) => <Product key={product._id} product={product}/>)
-        }
+        {category ? filteredProducts() : allProducts()}
       </Grid>
       <span>carregar mais</span>
     </Style>

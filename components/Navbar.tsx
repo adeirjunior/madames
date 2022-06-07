@@ -77,7 +77,11 @@ const Navbar = ({ path }: any) => {
       (
         <div id="logo">
           <h1>m'adames</h1>
-          <span>{category}</span>
+          <span>
+            {category === "sexShop" && "Sex Shop"}
+            {category === "langeries" && "Langeries"}
+            {category === "perfumes" && "Perfumes"}
+          </span>
         </div>
       ) : 
       (

@@ -26,9 +26,17 @@ export default {
         type: 'string'
     },
     {
-        name: 'category',
-        title: 'Categoria',
-        type: 'string'
+        name: 'tags',
+        title: 'Tags',
+        type: 'tags',
+        options: {
+          //Locks menu from creating new tags (defaults to false)
+          frozen: true,
+          //Preset of tags (defaults to empty)
+          preload: [{label: "Langeries", value: "langeries"}, {label: "Perfumes", value: "perfumes"}, {label: "Sex Shop", value: "sexShop"}],
+          //Closes menu after tag selected (defaults to true)
+          closeMenuOnSelect: true
+        }
     },
     {
         name: 'slug',
