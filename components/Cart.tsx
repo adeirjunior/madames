@@ -78,6 +78,7 @@ z-index: 99999999999;
   display: grid;
   gap: 1em;
   margin: 1em 0;
+  padding-bottom: 6em;
   overflow-y: scroll;
   width: 100%;
   height: -webkit-fill-available;
