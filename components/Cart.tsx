@@ -12,6 +12,7 @@ import Link from "next/link";
 const Style = styled(Div)`
 width: 100%;
 height: 100vh;
+max-height: 100vh;
 position: fixed;
 display: block;
 top: 0;
@@ -45,6 +46,8 @@ z-index: 99999999999;
   width: 100%;
   position: absolute;
   font-family: Montserrat;
+  box-shadow: 0px -10px 40px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
   bottom: 0;
   .buy-bar-container {
     padding: 1em;
@@ -66,6 +69,7 @@ z-index: 99999999999;
       border: none;
       padding: .5em 1em;
       border-radius: .5em;
+      cursor: pointer;
     }
   }
 }
@@ -74,6 +78,8 @@ z-index: 99999999999;
   gap: 1em;
   margin: 1em 0;
   overflow-y: scroll;
+  width: 100%;
+  height: auto;
   background-color: #E4E4E4;
   .product {
     display: grid;
