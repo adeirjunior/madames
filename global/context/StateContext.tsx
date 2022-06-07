@@ -89,6 +89,8 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
                     return Number(newStr);
                 });
                 setTotalQuantities(prev => prev - 1);
+            } else if (foundProduct.quantity === 1 ) {
+                remove(id);
             }
         }
     }
