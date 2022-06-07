@@ -12,7 +12,7 @@ import Link from "next/link";
 const Style = styled(Div)`
 width: 100%;
 height: 100vh;
-max-height: 100vh;
+max-height: -webkit-fill-available;
 position: fixed;
 display: block;
 top: 0;
