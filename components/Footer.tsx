@@ -21,7 +21,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <Style>
-      <p>M'adames &copy; {year}</p>
+      <p>M&apos;adames &copy; {year}</p>
       <a target="instagram" href="https://www.instagram.com/_m_adames/">
         <BsInstagram />
       </a>

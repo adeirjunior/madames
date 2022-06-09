@@ -205,6 +205,7 @@ const Cart: FC = () => {
                     layout="responsive"
                     width={50}
                     sizes="75vw"
+                    alt="image"
                     height={75}
                     src={urlFor(item?.image && item?.image[0].asset._ref).url()} 
                     />
