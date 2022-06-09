@@ -11,7 +11,7 @@ const Style = styled.div`
     font-size: .7rem;
     display: flex;
     justify-content: center;
-    margin: 1.5em 0 0;
+    margin: 3em 0 0;
   }
   .home-categories {
     font-family: Montserrat;

@@ -175,7 +175,7 @@ const Background = styled(Div)`
 const Cart: FC = () => {
 
   
-  const { setShowCart, showCart, remove, toggleCartItemQuantity, cartItems, totalPrice, totalQuantities }: any = useStateContext();
+  const { setShowCart, showCart, toggleCartItemQuantity, cartItems, totalPrice, totalQuantities }: any = useStateContext();
 
   return (
     <>

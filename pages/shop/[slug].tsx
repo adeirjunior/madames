@@ -1,18 +1,37 @@
 import type { NextPage } from "next";
+import { useRef } from "react";
 import { client } from "../../lib/client";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { urlFor } from "../../lib/client";
 import styled from "styled-components";
 import Head from "next/head";
 import { useStateContext } from "../../global/context/StateContext";
-import Zoom from 'next-image-zoom';
+import Image from 'next/image';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const Style = styled.div`
     background-color: #fff;
+    .slider {
+        .slick-slider {
+            .slick-dots{
+                @media only screen and (min-width: 500px){
+                    li button:before {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .small-controller {
+            display: none;
+        }
+    }
     .image-gallery {
         width: 150px;
         
     }
+
     .quantity {
         .quantity-desc {
             display: grid;
@@ -46,25 +65,56 @@ const Style = styled.div`
 `;
 
 const Item: NextPage = ({ product }: any) => {
+    const sliderNav: any = useRef(null);
+    const slider: any = useRef(null);
     const { image, lowImage, slug, name, desc, details, price } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
+
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    }
+    const sliderNavSettings = {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+    }
+    const loadImagesGallery = (images: []) => {
+        return images.map((image: any, index: number) => (
+            <div key={index} className="image-gallery">
+                <Image
+                height={200} 
+                src={urlFor(image.asset._ref).url()} 
+                alt={slug.current} 
+                width={150} 
+                blurDataURL={urlFor(lowImage.asset._ref).url()} 
+                layout="responsive" 
+                sizes="30vw" 
+                placeholder="blur"
+                />
+            </div>
+        ))
+    }
     return (
         <Style>
             <Head>
                 <title>Madames | {name}</title>
                 <meta name="description" content={desc} />
             </Head>
-            <div className="image-gallery">
-                <Zoom 
-                height={200} 
-                src={urlFor(image ? image[0].asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()} 
-                alt={slug.current} 
-                width={150} 
-                blurDataURL={urlFor(lowImage ? lowImage.asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()} 
-                layout="responsive" 
-                sizes="30vw" 
-                placeholder="blur"
-                />
+            <div className="slider">
+                <Slider asNavFor={sliderNav.current} ref={slider} {...sliderSettings}>
+                {image && loadImagesGallery(image)}
+                </Slider>
+                <div className="small-controller">
+                    <Slider asNavFor={slider.current} ref={sliderNav} {...sliderNavSettings}>
+                        {image && loadImagesGallery(image)}
+                    </Slider>
+                </div>
             </div>
             <div>R${price}</div>
             <div className='quantity'>
