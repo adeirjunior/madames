@@ -14,23 +14,53 @@ import "slick-carousel/slick/slick.css";
 const Style = styled.div`
     background-color: #fff;
     .slider {
+        max-width: 375px;
         .slick-slider {
-            .slick-dots{
-                @media only screen and (min-width: 500px){
-                    li button:before {
-                        display: none;
-                    }
+            .slick-list {
+                border-radius: 1.5em;
+                overflow: hidden;
+                transition: background-color .3s;
+                box-sizing: border-box;
+                height: fit-content;
+                cursor: grab;
+                &:hover {
+                    background-color: #ffc0cb;
                 }
             }
         }
         .small-controller {
             display: none;
+            margin-top: 2em;
+            .slick-slider .slick-list {
+                cursor: default;
+                &:hover {
+                    background-color: transparent;
+                }
+                .slick-track .slick-slide {
+                    cursor: pointer;
+                    &.slick-current {
+                        box-sizing: border-box;
+                        border: 5px solid #24113E;
+                    }
+                    &:not(:last-child) {
+                    
+                        
+                    }
+                }
+            }
+        }
+        @media only screen and (min-width: 500px){
+            .slick-slider .slick-dots li {
+                &, button, button:before {
+                    display: none;
+                }
+            }
+            .small-controller {
+                display: block;
+            }
         }
     }
-    .image-gallery {
-        width: 150px;
-        
-    }
+    
 
     .quantity {
         .quantity-desc {
@@ -86,8 +116,9 @@ const Item: NextPage = ({ product }: any) => {
     }
     const loadImagesGallery = (images: []) => {
         return images.map((image: any, index: number) => (
-            <div key={index} className="image-gallery">
+            
                 <Image
+                key={index}
                 height={200} 
                 src={urlFor(image.asset._ref).url()} 
                 alt={slug.current} 
@@ -97,7 +128,7 @@ const Item: NextPage = ({ product }: any) => {
                 sizes="30vw" 
                 placeholder="blur"
                 />
-            </div>
+           
         ))
     }
     return (
