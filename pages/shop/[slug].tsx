@@ -110,7 +110,7 @@ const Item: NextPage = ({ product }: any) => {
     const sliderNavSettings = {
         slidesToShow: 3,
         slidesToScroll: 1,
-        dots: false,
+        dots: true,
         centerMode: true,
         focusOnSelect: true
     }
