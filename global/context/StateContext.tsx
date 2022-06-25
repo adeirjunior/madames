@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import type { ChildrenProp } from "../../types/types";
 import type { FC } from "react";
@@ -18,6 +18,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     const [qty, setQty] = useState(1);
     const [path, setPath] = useState()
     const [ category, setCategory ] = useState("");
+    const [history, setHistory] = useState([]);
 
     let foundProduct: any;
 
@@ -53,6 +54,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             product.quantity = quantity;
             setCartItems([...cartItems, {...product}]);
         }
+        setQty(1);
         toast.success(`${qty} ${product.name} Adicionado Ao Carrinho`);
     }
     const remove = (id: string) => {
@@ -113,7 +115,9 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             category,
             setCategory,
             remove,
-            toggleCartItemQuantity
+            toggleCartItemQuantity,
+            setHistory,
+            history
         }}
         >
             {children}

@@ -110,9 +110,9 @@ const Item: NextPage = ({ product }: any) => {
     const sliderNavSettings = {
         slidesToShow: 3,
         slidesToScroll: 1,
-        dots: true,
+        dots: false,
         centerMode: true,
-        focusOnSelect: true
+        focusOnSelect: true,
     }
     const loadImagesGallery = (images: []) => {
         return images.map((image: any, index: number) => (
@@ -127,7 +127,7 @@ const Item: NextPage = ({ product }: any) => {
                 layout="responsive" 
                 sizes="30vw" 
                 placeholder="blur"
-                />
+                /> 
            
         ))
     }
@@ -143,10 +143,12 @@ const Item: NextPage = ({ product }: any) => {
                 </Slider>
                 <div className="small-controller">
                     <Slider asNavFor={slider.current} ref={sliderNav} {...sliderNavSettings}>
-                        {image && loadImagesGallery(image)}
+                        {image.length !==1 && loadImagesGallery(image)}
                     </Slider>
                 </div>
             </div>
+            
+            <h4>{name}</h4>
             <div>R${price}</div>
             <div className='quantity'>
                 <h3>Quantity:</h3>
