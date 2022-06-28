@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useState } from "react";
+import axios from 'axios';
 import { BsSearch } from 'react-icons/bs';
 import Div from "./StyledDivComponent";
 
@@ -19,7 +21,7 @@ margin: 1em 0 5em;
       outline: none;
       padding: 0 .5em;
     }
-    svg {
+    .search-icon svg {
       fill: #5D5D5D;
       cursor: pointer;
     }
@@ -33,7 +35,7 @@ margin: 1em 0 5em;
       font-size: 1.5rem;
       width: 700px;
     }
-    svg {
+    .search-icon svg {
       width: 30px;
       height: auto;
     }
@@ -42,11 +44,24 @@ margin: 1em 0 5em;
 `;
 
 const SearchBar = () => {
+  const [state, setState] = useState<string>('');
+
+  const search = async (e: any) => { 
+    if (e.code === 'Enter' || e.type === 'click') {
+      const query = state.split(' ').join('+');
+      const data = await axios.get(`/api/search?q=${query}`)
+      console.log(data);
+    }
+  }
+
     return (
         <Styled>
             <div className='search-products'>
-            <input placeholder='Pesquisar...' type="text"/>
+            <input enterKeyHint='search' value={state} onChange={e => setState(e.target.value)} onKeyDown={search} placeholder='Pesquisar...' type="search"/>
+            <div className="search-icon" onClick={search}>
               <BsSearch />
+            </div>
+              
             </div>
         </Styled>
     )

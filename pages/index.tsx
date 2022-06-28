@@ -88,9 +88,9 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = async () => {
   const query: string = `*[_type == "product"]`;
   const queryBanner: string = '*[_type == "banner"]';
-
   const products = await client.fetch(query);
   const banner = await client.fetch(queryBanner);
+
   return {
     props: {
       products,

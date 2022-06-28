@@ -10,15 +10,16 @@ interface CartItemsProps {
 }
 const Context = createContext({});
 export const StateContext: FC<ChildrenProp> = ({ children }) => {
-    const [logo, setLogo] = useState("Perfumes");
-    const [showCart, setShowCart] = useState(false);
+    const [logo, setLogo] = useState<string>("Perfumes");
+    const [showCart, setShowCart] = useState<boolean>(false);
     const [cartItems, setCartItems] = useState([] as CartItemsProps[]);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [totalQuantities, setTotalQuantities] = useState(0);
-    const [qty, setQty] = useState(1);
-    const [path, setPath] = useState()
-    const [ category, setCategory ] = useState("");
-    const [history, setHistory] = useState([]);
+    const [totalPrice, setTotalPrice] = useState<number>(0);
+    const [totalQuantities, setTotalQuantities] = useState<number>(0);
+    const [qty, setQty] = useState<number>(1);
+    const [path, setPath] = useState<string>()
+    const [ category, setCategory ] = useState<string>("");
+    const [history, setHistory] = useState<string[]>([]);
+    const [searchData, setSearchData] = useState<string>('');
 
     let foundProduct: any;
 
@@ -34,8 +35,8 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     }
     const onAdd = (product: Product, quantity: number) => {
         const checkProductInCart = cartItems.find((item: {_id: any}) => item._id === product._id);
-        setTotalPrice((prev: any) => prev + product.price * quantity);
-        setTotalQuantities(prev => prev + quantity);
+        setTotalPrice((prev: number) => prev + product.price * quantity);
+        setTotalQuantities((prev: number) => prev + quantity);
             
 
         if (checkProductInCart) {
