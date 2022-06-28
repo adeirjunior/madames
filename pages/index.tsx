@@ -63,7 +63,7 @@ const Home: NextPage = ({ products, banner }: any) => {
   return (
     <Style>
       <Head>
-        <title>Madames</title>
+        <title>M&apos;adames</title>
         <meta name="description" content="M'adames é uma loja dedicada a venda de produtos focados a vida íntima feminina" />
       </Head>
       <HeroBanner banner={banner[0]} />

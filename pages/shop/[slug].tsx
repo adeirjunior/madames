@@ -134,7 +134,7 @@ const Item: NextPage = ({ product }: any) => {
     return (
         <Style>
             <Head>
-                <title>Madames | {name}</title>
+                <title>M&apos;adames | {name}</title>
                 <meta name="description" content={desc} />
             </Head>
             <div className="slider">

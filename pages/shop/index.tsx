@@ -10,7 +10,7 @@ const Shop: NextPage = () => {
 
     return <Styled>
         <Head>
-            <title>Madames </title>
+            <title>M&apos;adames </title>
             <meta name="description" content="Os produtos da Madames estão sempre prontos á entrega para a máxima satisfação dos clientes" />
         </Head>
     </Styled>
