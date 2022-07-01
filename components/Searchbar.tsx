@@ -48,12 +48,14 @@ margin: 1em 0 5em;
 const SearchBar = () => {
   const [state, setState] = useState<string>('');
   const { setSearchResults }: any = useStateContext();
-
+  const [code, setCode] = useState<string>('');
   const search = async (e: any) => { 
     if (e.code === 'Enter' || e.type === 'click' || e.keyCode === 66) {
       const query = state.split(' ').join('+');
       const data = await axios.get(`/api/search?q=${query}`)
       setSearchResults(data.data.results);
+      setCode(e.code);
+      console.log(e)
       if (Router.asPath !== '/shop' && data.data.results) Router.push('/shop');
     }
   }
@@ -61,12 +63,12 @@ const SearchBar = () => {
     return (
         <Styled>
             <div className='search-products'>
-            <input enterKeyHint='search' name="product" value={state} onChange={e => setState(e.target.value)} onKeyDown={search} placeholder='Pesquisar...' type="search"/>
-            <div className="search-icon" onClick={search}>
-              <BsSearch />
+              <input enterKeyHint='search' name="product" value={state} onChange={e => setState(e.target.value)} onKeyDown={search} placeholder='Pesquisar...' type="search"/>
+              <div className="search-icon" onClick={search}>
+                <BsSearch />
+              </div>
             </div>
-              
-            </div>
+            {code}
         </Styled>
     )
 }
