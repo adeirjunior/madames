@@ -50,11 +50,11 @@ const SearchBar = () => {
   const { setSearchResults }: any = useStateContext();
 
   const search = async (e: any) => { 
-    if (e.code === 'Enter' || e.type === 'click') {
+    if (e.code === 'Enter' || e.type === 'click' || e.keyCode === 66) {
       const query = state.split(' ').join('+');
       const data = await axios.get(`/api/search?q=${query}`)
       setSearchResults(data.data.results);
-      if (Router.asPath !== '/shop') Router.push('/shop');
+      if (Router.asPath !== '/shop' && data.data.results) Router.push('/shop');
     }
   }
 

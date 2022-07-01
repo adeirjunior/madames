@@ -6,7 +6,7 @@ type Data = {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-    const query: string = req.query.q ? `*[_type == "product" && name == "${req.query.q}"]` : '*[_type == "product"]';
+    const query: string = req.query.q ? `*[_type == "product" && name == "${req.query.q}"]` : '';
     if (req.method === 'GET' && query) {
         const results = await client.fetch(query);
         res.statusCode = 200;
