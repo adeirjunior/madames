@@ -17,9 +17,9 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     const [totalQuantities, setTotalQuantities] = useState<number>(0);
     const [qty, setQty] = useState<number>(1);
     const [path, setPath] = useState<string>()
-    const [ category, setCategory ] = useState<string>("");
+    const [category, setCategory] = useState<string>("");
     const [history, setHistory] = useState<string[]>([]);
-    const [searchData, setSearchData] = useState<string>('');
+    const [searchResults, setSearchResults] = useState([]);
 
     let foundProduct: any;
 
@@ -118,7 +118,9 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             remove,
             toggleCartItemQuantity,
             setHistory,
-            history
+            history,
+            searchResults,
+            setSearchResults
         }}
         >
             {children}

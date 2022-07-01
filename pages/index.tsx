@@ -59,7 +59,6 @@ const Home: NextPage = ({ products, banner }: any) => {
     const filter = products.filter((product: any) => product.tags[0].value == category)
     return filter.map((product: any) => <Product key={product._id} product={product}/>);
   }
-  filteredProducts()
   return (
     <Style>
       <Head>
