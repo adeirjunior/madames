@@ -6,7 +6,16 @@ import { client } from "../../lib/client";
 import { useStateContext } from '../../global/context/StateContext';
 
 const Styled = styled.div`
-
+  .other-products {
+    margin-bottom: 2em;
+  }
+  .other-products, .no-product{
+  text-align: center;
+ }
+  .no-product {
+  color: #a1a1a1;
+  margin-bottom: 4em;
+ }
 `;
 
 const Shop: NextPage = ({ products }: any) => {
@@ -18,9 +27,11 @@ const Shop: NextPage = ({ products }: any) => {
             <title>M&apos;adames </title>
             <meta name="description" content="Os produtos da Madames estão sempre prontos á entrega para a máxima satisfação dos clientes" />
         </Head>
-        <SearchBar />
+        <SearchBar filter/>
+        {searchResults && searchResults.lenght >= 1 ? (<Grid>{allProducts(searchResults)}</Grid>) : (<p className="no-product">Nenhum produto encontrado</p>)}
+        <h4 className="other-products">Outros Produtos</h4>
         <Grid>
-            {searchResults ? allProducts(searchResults) : allProducts(products)}
+          {allProducts(products)}
         </Grid>
     </Styled>
 }

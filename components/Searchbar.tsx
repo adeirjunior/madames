@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useState } from "react";
 import Router from 'next/router';
 import axios from 'axios';
+import type { FC } from "react";
 import { BsSearch } from 'react-icons/bs';
 import Div from "./StyledDivComponent";
 import { useStateContext } from "../global/context/StateContext";
@@ -44,13 +44,15 @@ margin: 1em 0 5em;
   }
 }
 `;
-
-const SearchBar = () => {
-  const [state, setState] = useState<string>('');
-  const { setSearchResults }: any = useStateContext();
+interface prop {
+  filter?: boolean
+}
+const SearchBar: FC<prop> = ({ filter }) => {
+  
+  const { setSearchResults, searchText, setSearchText }: any = useStateContext();
   const search = async (e: any) => { 
     if (e.code === 'Enter' || e.type === 'click' || e.keyCode === 13) {
-      const query = state.split(' ').join('+');
+      const query = searchText.split(' ').join('+');
       const data = await axios.get(`/api/search?q=${query}`)
       setSearchResults(data.data.results);
       if (Router.asPath !== '/shop' && data.data.results) Router.push('/shop');
@@ -60,11 +62,12 @@ const SearchBar = () => {
     return (
         <Styled>
             <div className='search-products'>
-              <input enterKeyHint='search' name="product" value={state} onChange={e => setState(e.target.value)} onKeyDown={search} placeholder='Pesquisar...' type="search"/>
+              <input enterKeyHint='search' name="product" value={searchText} onChange={e => setSearchText(e.target.value)} onKeyDown={search} placeholder='Pesquisar...' type="search"/>
               <div className="search-icon" onClick={search}>
                 <BsSearch />
               </div>
             </div>
+            {filter && (<p>filter</p>)}
         </Styled>
     )
 }

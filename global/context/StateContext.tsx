@@ -20,6 +20,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     const [category, setCategory] = useState<string>("");
     const [history, setHistory] = useState<string[]>([]);
     const [searchResults, setSearchResults] = useState([]);
+    const [searchText, setSearchText] = useState<string>('');
 
     let foundProduct: any;
 
@@ -120,7 +121,9 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             setHistory,
             history,
             searchResults,
-            setSearchResults
+            setSearchResults,
+            searchText,
+            setSearchText
         }}
         >
             {children}
