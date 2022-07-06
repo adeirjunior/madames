@@ -70,9 +70,12 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
 
     const toggleCartItemQuantity = (id: string, value: string) => {
         foundProduct = cartItems.find(item => item._id === id);
+        const indexFoundProduct = cartItems.indexOf(foundProduct);
+        let newCart = cartItems;
         const newCartItems = cartItems.filter(item => item._id !== id);
         if (value === 'inc') {
-            setCartItems([{ ...foundProduct, quantity: foundProduct.quantity + 1}, ...newCartItems]);
+            newCart[indexFoundProduct].quantity = foundProduct.quantity + 1;
+            setCartItems(newCart);
             setTotalPrice((prev: number) => {
                 const math: number = prev + foundProduct.price;
                 const str: string[] = String(math).split('.');
@@ -84,7 +87,8 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
 
         } else if( value === 'dec' ) {
             if (foundProduct.quantity > 1 ) {
-                setCartItems([{ ...foundProduct, quantity: foundProduct.quantity - 1}, ...newCartItems]);
+                newCart[indexFoundProduct].quantity = foundProduct.quantity - 1;
+                setCartItems(newCart);
                 setTotalPrice((prev: number) => {
                     const math: number = prev - foundProduct.price;
                     const str: string[] = String(math).split('.');

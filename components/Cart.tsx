@@ -5,7 +5,6 @@ import { BsArrowLeft, BsBagDash } from "react-icons/bs";
 import { useStateContext } from "../global/context/StateContext";
 import Div from "./StyledDivComponent";
 import { urlFor } from "../lib/client";
-import toast from "react-hot-toast";
 import Image from "next/image";
 import Link from "next/link";
 
