@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast";
 import type { ChildrenProp } from "../../types/types";
 import type { FC } from "react";
 import type { Product } from "../../types/interfaces";
+import currency from 'currency.js';
 
 interface CartItemsProps {
     _id: any,
@@ -36,7 +37,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     }
     const onAdd = (product: Product, quantity: number) => {
         const checkProductInCart = cartItems.find((item: {_id: any}) => item._id === product._id);
-        setTotalPrice((prev: number) => prev + product.price * quantity);
+        setTotalPrice((prev: number) => Number(currency(prev).add(currency(product.price).multiply(quantity))));
         setTotalQuantities((prev: number) => prev + quantity);
             
 
@@ -63,7 +64,10 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
         foundProduct = cartItems.find(item => item._id === id);
         const newCartItems = cartItems.filter(item => item._id !== id);
 
-        setTotalPrice(prev => prev - foundProduct.price * foundProduct.quantity);
+        setTotalPrice((prev: number) => {
+            const result = currency(prev).subtract(currency(foundProduct.price).multiply(foundProduct.quantity));
+            return Number(result);
+        });
         setTotalQuantities(prev => prev - foundProduct.quantity);
         setCartItems(newCartItems);
     }
@@ -72,16 +76,12 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
         foundProduct = cartItems.find(item => item._id === id);
         const indexFoundProduct = cartItems.indexOf(foundProduct);
         let newCart = cartItems;
-        const newCartItems = cartItems.filter(item => item._id !== id);
         if (value === 'inc') {
             newCart[indexFoundProduct].quantity = foundProduct.quantity + 1;
             setCartItems(newCart);
             setTotalPrice((prev: number) => {
-                const math: number = prev + foundProduct.price;
-                const str: string[] = String(math).split('.');
-                const decimalPart: string = str[1]?.substr(0, 2) ?? '00'; 
-                const newStr: string = `${str[0]}.${decimalPart}`;
-                return Number(newStr);
+                const math:any = currency(prev).add(foundProduct.price);
+                return Number(math);
             });
             setTotalQuantities(prev => prev + 1);
 
@@ -90,11 +90,8 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
                 newCart[indexFoundProduct].quantity = foundProduct.quantity - 1;
                 setCartItems(newCart);
                 setTotalPrice((prev: number) => {
-                    const math: number = prev - foundProduct.price;
-                    const str: string[] = String(math).split('.');
-                    const decimalPart: string = str[1]?.substr(0, 2) ?? '00'; 
-                    const newStr: string = `${str[0]}.${decimalPart}`;
-                    return Number(newStr);
+                    const math:any = currency(prev).subtract(foundProduct.price);
+                    return Number(math);
                 });
                 setTotalQuantities(prev => prev - 1);
             } else if (foundProduct.quantity === 1 ) {
