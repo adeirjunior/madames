@@ -10,8 +10,9 @@ import Image from 'next/image';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import { DivProp } from "../../components/StyledComponents";
 
-const Style = styled.div`
+const Style = styled(DivProp)`
     background-color: #fff;
     .slider {
         max-width: 375px;

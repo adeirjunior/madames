@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { Grid, Product, SearchBar } from "../../components";
 import { client } from "../../lib/client";
 import { useStateContext } from '../../global/context/StateContext';
+import { DivProp } from "../../components/StyledComponents";
 
-const Styled = styled.div`
+const Styled = styled(DivProp)`
   .other-products {
     margin-bottom: 2em;
   }
