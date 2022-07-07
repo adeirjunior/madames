@@ -12,3 +12,5 @@ const Login: NextPage = () => {
         <Form />
     </Style>
 }
+
+export default Login;

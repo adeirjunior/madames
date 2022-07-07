@@ -12,3 +12,5 @@ const Signup: NextPage = () => {
         <Form />
     </Style>
 }
+
+export default Signup;
