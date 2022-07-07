@@ -4,9 +4,9 @@ import Image from "next/image";
 import { urlFor } from "../lib/client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Div from "./StyledDivComponent";
+import { DivProp } from "./StyledComponents";
 
-const Style = styled(Div)`
+const Style = styled(DivProp)`
 padding: .75em;
 border: solid #E4E4E4 1px;
 cursor: pointer;

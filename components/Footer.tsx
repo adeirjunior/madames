@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { BsInstagram } from "react-icons/bs";
-import Div from "./StyledDivComponent";
+import { DivProp } from "./StyledComponents";
 
-const Style = styled(Div)`
+const Style = styled(DivProp)`
   background-color: #fff;
   display: flex;
   padding: 4em 1em;

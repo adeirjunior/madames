@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { client } from '../lib/client';
 import { HeroBanner, Product, SearchBar, Grid } from '../components';
 import { useStateContext } from '../global/context/StateContext';
+import Div from '../components/StyledComponents';
 
-const Style = styled.div`
+const Style = styled(Div)`
   span{
     font-family: Montserrat;
     font-size: .7rem;

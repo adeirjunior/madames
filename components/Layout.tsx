@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import type { ChildrenProp } from "../types/types";
 import { Navbar, Footer } from "./";
-import Div from "./StyledDivComponent";
+import { DivProp } from "./StyledComponents";
 
-const Style = styled(Div)`
+const Style = styled(DivProp)`
 background-color: #fff;
 overflow: hidden;
 

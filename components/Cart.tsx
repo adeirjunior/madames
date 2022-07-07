@@ -3,12 +3,12 @@ import { FC } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { BsArrowLeft, BsBagDash } from "react-icons/bs";
 import { useStateContext } from "../global/context/StateContext";
-import Div from "./StyledDivComponent";
+import { DivProp } from "./StyledComponents";
 import { urlFor } from "../lib/client";
 import Image from "next/image";
 import Link from "next/link";
 
-const Style = styled(Div)`
+const Style = styled(DivProp)`
 width: 100%;
 height: 100vh;
 max-height: -webkit-fill-available;
@@ -159,7 +159,7 @@ z-index: 99999999999;
   }
 }
 `;
-const Background = styled(Div)`
+const Background = styled(DivProp)`
   width: 100%;
   height: 100vh;
   position: fixed;

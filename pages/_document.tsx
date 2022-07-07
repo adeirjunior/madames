@@ -33,6 +33,7 @@ class MyDocument extends Document {
         <Html lang="en">
             <Head>
               <meta name="google-site-verification" content="QEDxcauw5S2Zb7wLO6cfVL6916bTul7_PHD2k2UI_fk" />
+              <meta name="google" content="notranslate" />
               <link rel="icon" href="assets/icons/m.png" type="image/icon type" />
               <link rel="preconnect" href="https://fonts.googleapis.com" />
               <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />

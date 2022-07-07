@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "../lib/client";
 import { motion } from "framer-motion";
-import Div from "./StyledDivComponent";
+import { DivProp } from "./StyledComponents";
 
-const Style = styled(Div)`
+const Style = styled(DivProp)`
 background: linear-gradient(to bottom, rgb(236, 71, 142), rgba(236, 71, 142, 0));
 width: 100%;
 height: 200px;

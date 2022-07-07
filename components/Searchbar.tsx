@@ -3,10 +3,11 @@ import Router from 'next/router';
 import axios from 'axios';
 import type { FC } from "react";
 import { BsSearch } from 'react-icons/bs';
-import Div from "./StyledDivComponent";
+import { DivProp } from "./StyledComponents";
 import { useStateContext } from "../global/context/StateContext";
+import { SearchBarProp } from "../types/interfaces";
 
-const Styled = styled(Div)` 
+const Styled = styled(DivProp)` 
 display: flex;
 justify-content: center;
 margin: 1em 0 5em;
@@ -44,10 +45,8 @@ margin: 1em 0 5em;
   }
 }
 `;
-interface prop {
-  filter?: boolean
-}
-const SearchBar: FC<prop> = ({ filter }) => {
+
+const SearchBar: FC<SearchBarProp> = ({ filter }) => {
   
   const { setSearchResults, searchText, setSearchText }: any = useStateContext();
   const search = async (e: any) => { 

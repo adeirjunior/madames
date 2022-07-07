@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import type { ChildrenProp } from '../types/types';
-import Div from "./StyledDivComponent";
+import { DivProp } from "./StyledComponents";
 
-const Style = styled(Div)`
+const Style = styled(DivProp)`
 display: grid;
 position: relative;
 grid-template-columns: repeat(2, 125px);

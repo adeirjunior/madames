@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Div from "./StyledDivComponent";
+import { DivProp } from "./StyledComponents";
 
-const Style = styled(Div)`
+const Style = styled(DivProp)`
 background-color: red;
 `;
 
