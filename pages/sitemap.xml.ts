@@ -1,9 +1,9 @@
 import Domain from "../lib/getUrl";
 
 //pages/sitemap.xml.js
-const EXTERNAL_DATA_URL = 'https://jsonplaceholder.typicode.com/posts';
+const EXTERNAL_DATA_URL = `${Domain()}shop`;
 
-function generateSiteMap(posts: any) {
+function generateSiteMap({ posts }: any) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the two URLs we know already-->
@@ -11,13 +11,19 @@ function generateSiteMap(posts: any) {
        <loc>${Domain()}</loc>
      </url>
      <url>
-       <loc>${Domain()}guide</loc>
+       <loc>${Domain()}shop</loc>
+     </url>
+     <url>
+       <loc>${Domain()}login</loc>
+     </url>
+     <url>
+       <loc>${Domain()}signup</loc>
      </url>
      ${posts
        .map(({ id }: any) => {
          return `
        <url>
-           <loc>${`${EXTERNAL_DATA_URL}/${id}`}</loc>
+           <loc>${EXTERNAL_DATA_URL}/${id}</loc>
        </url>
      `;
        })
@@ -44,7 +50,9 @@ export async function getServerSideProps({ res }: any) {
   res.end();
 
   return {
-    props: {},
+    props: {
+        posts
+    },
   };
 }
 
