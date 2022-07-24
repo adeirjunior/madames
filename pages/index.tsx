@@ -79,11 +79,10 @@ const Home: NextPage = ({ products, banner }: any) => {
       <Grid>
         {category ? filteredProducts() : allProducts()}
       </Grid>
-      <span>carregar mais {Domain()}</span>
+      <span>carregar mais</span>
     </Style>
   )
 }
-
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
