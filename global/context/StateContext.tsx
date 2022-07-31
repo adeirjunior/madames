@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from "react";
-import { toast } from "react-hot-toast";
-import type { ChildrenProp } from "../../types/types";
-import type { FC } from "react";
-import type { Product } from "../../types/interfaces";
-import currency from 'currency.js';
+import { createContext, useContext, useState } from "react"
+import { toast } from "react-hot-toast"
+import type { ChildrenProp } from "../../types/types"
+import type { FC } from "react"
+import type { Product } from "../../types/interfaces"
+import currency from "currency.js"
 
 interface CartItemsProps {
     _id: any,
@@ -26,10 +26,10 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
     let foundProduct: any;
 
     const incQty = () => {
-        setQty((prev) => prev + 1);
+        setQty((prev: number) => prev + 1);
     }
     const decQty = () => {
-        setQty((prev) => {
+        setQty((prev: number) => {
             if (prev - 1 < 1) return 1;
 
             return prev - 1
@@ -68,7 +68,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
             const result = currency(prev).subtract(currency(foundProduct.price).multiply(foundProduct.quantity));
             return Number(result);
         });
-        setTotalQuantities(prev => prev - foundProduct.quantity);
+        setTotalQuantities((prev: number) => prev - foundProduct.quantity);
         setCartItems(newCartItems);
     }
 
@@ -83,7 +83,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
                 const math:any = currency(prev).add(foundProduct.price);
                 return Number(math);
             });
-            setTotalQuantities(prev => prev + 1);
+            setTotalQuantities((prev: number) => prev + 1);
 
         } else if( value === 'dec' ) {
             if (foundProduct.quantity > 1 ) {
@@ -93,7 +93,7 @@ export const StateContext: FC<ChildrenProp> = ({ children }) => {
                     const math:any = currency(prev).subtract(foundProduct.price);
                     return Number(math);
                 });
-                setTotalQuantities(prev => prev - 1);
+                setTotalQuantities((prev: number) => prev - 1);
             } else if (foundProduct.quantity === 1 ) {
                 remove(id);
             }

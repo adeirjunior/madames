@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { client } from "../../lib/client";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { urlFor } from "../../lib/client";
@@ -85,6 +85,7 @@ const Style = styled(DivProp)`
         width: 100%;
         font-size: .9rem;
         max-width: 280px;
+        max-height: 46px;
         background-color: #24113E;
         font-family: Montserrat;
         text-transform: uppercase;
@@ -98,6 +99,7 @@ const Style = styled(DivProp)`
 const Item: NextPage = ({ product }: any) => {
     const sliderNav: any = useRef(null);
     const slider: any = useRef(null);
+    const [btnText, setBtnText] = useState("Adicionar Ao Carrinho");
     const { image, lowImage, slug, name, desc, details, price } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
 
@@ -114,6 +116,12 @@ const Item: NextPage = ({ product }: any) => {
         dots: false,
         centerMode: true,
         focusOnSelect: true,
+    }
+    const btnClick = () => {
+        if (btnText === "Adicionar Ao Carrinho") {
+            setBtnText("✔")
+            setTimeout(() => { setBtnText("Adicionar Ao Carrinho")}, 500)
+        }
     }
     const loadImagesGallery = (images: []) => {
         return images.map((image: any, index: number) => (
@@ -168,9 +176,9 @@ const Item: NextPage = ({ product }: any) => {
             <button 
             type="button" 
             className='add-to-cart'
-            onClick={() => onAdd(product, qty)}
+            onClick={() => {onAdd(product, qty); btnClick()}}
             >
-                Adicionar Ao Carrinho
+                {btnText}
             </button>
         </Style>
     )

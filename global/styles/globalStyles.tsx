@@ -12,10 +12,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: #fff;
   }
-  h1, h2, h3, h4, h5{
+  h1, h2, h3, h4, h5, h6, div{
     font-weight: 400;
   }
-  h1,h2,h3,h4,h5,p,span,a,input {
+  h1,h2,h3,h4,h5,h6,div,p,span,a,input {
     color: #24113E;
     text-decoration: none;
     &::selection {
@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
       color: #fff;
     }
   }
-  h2, h3, h4, h5, p, a {
+  h1, h2, h3, h4, h5, h6, div, p, a {
     font-family: 'Montserrat', sans-serif;
   }
 `;
