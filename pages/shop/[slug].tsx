@@ -16,6 +16,7 @@ const Style = styled(DivProp)`
     background-color: #fff;
     .slider {
         max-width: 375px;
+        margin-bottom: 1em;
         .slick-slider {
             .slick-list {
                 border-radius: 1.5em;
@@ -62,13 +63,26 @@ const Style = styled(DivProp)`
         }
     }
     
-
-    .quantity {
+    .top-product-part {
+        margin-left: 1em;
+        .product-name, .product-price {
+            margin-bottom: 15px;
+        }
+        .product-name {
+            font-size: .9em;
+        }
+        .product-price {
+            font-size: 1.25rem;
+        }
+        .product-quantity {
+            display: flex;
+            font-size: .9em;
         .quantity-desc {
             display: grid;
             grid-template-columns: repeat(3, 25px);
-            gap: 25px;
+            gap: 15px;
             grid-template-rows: 25px;
+            padding-left: 15px;
             .minus, .plus {
                 cursor: pointer;
             }
@@ -78,7 +92,13 @@ const Style = styled(DivProp)`
             }
         }
     }
-    .add-to-cart {
+    }
+    .btn-centralize {
+        display: flex;
+        justify-content: center;
+        
+
+        .add-to-cart {
         border: none;
         padding: 1em 0;
         color: #fff;
@@ -93,6 +113,8 @@ const Style = styled(DivProp)`
         cursor: pointer;
         margin: 1.5em 0;
         user-select: none;
+
+    }
     }
 `;
 
@@ -119,8 +141,8 @@ const Item: NextPage = ({ product }: any) => {
     }
     const btnClick = () => {
         if (btnText === "Adicionar Ao Carrinho") {
-            setBtnText("✔")
-            setTimeout(() => { setBtnText("Adicionar Ao Carrinho")}, 500)
+            setBtnText("✓")
+            setTimeout(() => { setBtnText("Adicionar Ao Carrinho")}, 1000)
         }
     }
     const loadImagesGallery = (images: []) => {
@@ -156,30 +178,39 @@ const Item: NextPage = ({ product }: any) => {
                     </Slider>
                 </div>
             </div>
-            
-            <h4>{name}</h4>
-            <div>R${price}</div>
-            <div className='quantity'>
-                <h3>Quantity:</h3>
-                <p className='quantity-desc'> 
-                    <span className='minus' onClick={decQty}>
-                        <AiOutlineMinus />
-                    </span>
-                    <span className='num'>
-                        {qty}
-                    </span>
-                    <span className='plus' onClick={incQty}>
-                        <AiOutlinePlus />
-                    </span>
-                </p> 
+            <div className="top-product-part">
+                <h4 className="product-name">{name}</h4>
+                <div className="product-price">R${price}</div>
+                <div className='product-quantity'>
+                    <h3>quantidade:</h3>
+                    <p className='quantity-desc'> 
+                        <span className='minus' onClick={decQty}>
+                            <AiOutlineMinus />
+                        </span>
+                        <span className='num'>
+                            {qty}
+                        </span>
+                        <span className='plus' onClick={incQty}>
+                            <AiOutlinePlus />
+                        </span>
+                    </p> 
+                </div>
             </div>
-            <button 
-            type="button" 
-            className='add-to-cart'
-            onClick={() => {onAdd(product, qty); btnClick()}}
-            >
-                {btnText}
-            </button>
+            <div className="btn-centralize">
+                <button 
+                type="button" 
+                className='add-to-cart'
+                onClick={() => {
+                    btnText === "Adicionar Ao Carrinho" && onAdd(product, qty)
+                    btnClick()
+                }}
+                >
+                    {btnText}
+                </button>
+            </div>
+            <div className="bottom-product-part">
+
+            </div>
         </Style>
     )
 };
