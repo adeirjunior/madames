@@ -11,12 +11,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { DivProp } from "../../components/StyledComponents";
+import currency from "currency.js";
+import turnMoney from "../../lib/turnMoney";
 
 const Style = styled(DivProp)`
     background-color: #fff;
     .slider {
         max-width: 375px;
-        margin-bottom: 1em;
+        margin-bottom: 1.7em;
         .slick-slider {
             .slick-list {
                 border-radius: 1.5em;
@@ -65,14 +67,24 @@ const Style = styled(DivProp)`
     
     .top-product-part {
         margin-left: 1em;
-        .product-name, .product-price {
+        .product-name, .product-price, .parcela {
             margin-bottom: 15px;
         }
         .product-name {
-            font-size: .9em;
+            font-size: .9rem;
         }
         .product-price {
             font-size: 1.25rem;
+            .descount {
+                margin-left: 1em;
+                font-size: .9rem;
+                opacity: .7;
+                text-decoration: line-through;
+            }
+        }
+        .parcela {
+            font-size: .9rem;
+            opacity: .7;
         }
         .product-quantity {
             display: flex;
@@ -82,7 +94,7 @@ const Style = styled(DivProp)`
             grid-template-columns: repeat(3, 25px);
             gap: 15px;
             grid-template-rows: 25px;
-            padding-left: 15px;
+            padding-left: 2em;
             .minus, .plus {
                 cursor: pointer;
             }
@@ -124,7 +136,7 @@ const Item: NextPage = ({ product }: any) => {
     const [btnText, setBtnText] = useState("Adicionar Ao Carrinho");
     const { image, lowImage, slug, name, desc, details, price } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
-
+    
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -160,7 +172,11 @@ const Item: NextPage = ({ product }: any) => {
                 placeholder="blur"
                 /> 
            
-        ))
+        ));
+    }
+    const parcel = (price: number, parcels: number) => {
+        const money = String(currency(price, { symbol: "R$"}).distribute(parcels)[0].format());
+        return `${parcels}x de ${money} sem juros`;
     }
     return (
         <Style>
@@ -180,7 +196,8 @@ const Item: NextPage = ({ product }: any) => {
             </div>
             <div className="top-product-part">
                 <h4 className="product-name">{name}</h4>
-                <div className="product-price">R${price}</div>
+                <div className="product-price">{turnMoney(price)}<span className="descount">{turnMoney(100)}</span></div>
+                <div className="parcela">{parcel(price, 2)}</div>
                 <div className='product-quantity'>
                     <h3>quantidade:</h3>
                     <p className='quantity-desc'> 
@@ -229,7 +246,7 @@ export const getStaticPaths = async () => {
         params: {
             slug: product.slug.current
         }
-    }))
+    }));
     return {
         paths,
         fallback: false

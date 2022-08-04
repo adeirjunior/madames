@@ -14,12 +14,15 @@ justify-content: space-between;
 #logo {
   display: flex;
   align-items: center;
-  font-family: 'Parisienne', cursive;
   text-transform: capitalize;
   user-select: none;
+  h1, span {
+    font-family: 'Parisienne', cursive;
+  }
   h1 {
     font-size: 1.25rem;
     font-weight: 500;
+    
   }
   span {
     font-size: .7rem;

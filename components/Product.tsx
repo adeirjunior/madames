@@ -5,6 +5,7 @@ import { urlFor } from "../lib/client";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { DivProp } from "./StyledComponents";
+import turnMoney from "../lib/turnMoney";
 
 const Style = styled(DivProp)`
 padding: .75em;
@@ -78,7 +79,7 @@ const Product: FC<Prop> = ({ product: {image, name, slug, price, lowImage} }: Pr
             src={urlFor(image ? image[0].asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()}
             />
             <p className="product-name">{name}</p>
-            <p className="product-price">R${price}</p>
+            <p className="product-price">{turnMoney(price)}</p>
           </div>
         </Link>
       </Style>
