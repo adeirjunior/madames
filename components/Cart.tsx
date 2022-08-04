@@ -7,6 +7,7 @@ import { DivProp } from "./StyledComponents";
 import { urlFor } from "../lib/client";
 import Image from "next/image";
 import Link from "next/link";
+import turnMoney from "../lib/turnMoney";
 
 const Style = styled(DivProp)`
 width: 100%;
@@ -213,7 +214,7 @@ const Cart: FC = () => {
                 <div className="details">
                   <h4 className="product-price">{item?.name}</h4>
                   <h4 className="product-variant">Variação:</h4>
-                  <h3 className="product-name">R${item?.price}</h3>
+                  <h3 className="product-name">{turnMoney(item?.price)}</h3>
                   <div className="product-quantity">
                     <span className="minus" onClick={() => toggleCartItemQuantity(item?._id, 'dec')}><AiOutlineMinus /></span>
                     <span className="enum">{item?.quantity}</span>
@@ -226,7 +227,7 @@ const Cart: FC = () => {
           </div>
           <div className="buy-bar">
             <div className="buy-bar-container">
-              <p>Sub-total <span>R$ {totalPrice}</span></p>
+              <p>Sub-total <span>{turnMoney(totalPrice)}</span></p>
               <button>Continuar</button>
             </div>
           </div>
