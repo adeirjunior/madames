@@ -5,7 +5,6 @@ import { client } from '../lib/client';
 import { HeroBanner, Product, SearchBar, Grid } from '../components';
 import { useStateContext } from '../global/context/StateContext';
 import { DivProp } from '../components/StyledComponents';
-import Domain from '../lib/getUrl';
 
 const Style = styled(DivProp)`
   span{

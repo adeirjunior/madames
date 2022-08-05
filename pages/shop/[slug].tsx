@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick.css";
 import { DivProp } from "../../components/StyledComponents";
 import currency from "currency.js";
 import turnMoney from "../../lib/turnMoney";
+import { Grid, Product } from "../../components";
 
 const Style = styled(DivProp)`
     background-color: #fff;
@@ -128,15 +129,28 @@ const Style = styled(DivProp)`
 
     }
     }
+    .bottom-product-part{
+        
+    }
+    .you-may-like {
+        
+        h3 {
+            margin-left: 1em;
+            margin-bottom: 2em;
+            font-size: .9rem;
+            font-weight: bold;
+        }
+    }
 `;
 
-const Item: NextPage = ({ product }: any) => {
+const Item: NextPage = ({ product, products }: any) => {
     const sliderNav: any = useRef(null);
     const slider: any = useRef(null);
     const [btnText, setBtnText] = useState("Adicionar Ao Carrinho");
     const { image, lowImage, slug, name, desc, details, price } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
     
+    const allProducts = () => products.map((product: any) => <Product key={product._id} product={product}/>);
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -227,6 +241,12 @@ const Item: NextPage = ({ product }: any) => {
             </div>
             <div className="bottom-product-part">
 
+            </div>
+            <div className="you-may-like">
+                <h3>Você tambem pode gostar</h3>
+                <Grid>
+                    {allProducts()}
+                </Grid>
             </div>
         </Style>
     )
