@@ -23,9 +23,17 @@ export default {
         }
     },
     {
-        name: 'ProductColor',
-        title: 'Cor do Produto',
-        type: 'colorPicker'
+        name: 'ProductColors',
+        title: 'Cores do Produto',
+        type: 'array',
+        of: [
+            {
+                name: 'color',
+                title: 'Cor',
+                type: 'colorPicker',
+                initialValue: "#ffffff"
+            }
+        ]
     },
     {
         name: 'name',

@@ -8,6 +8,8 @@ import { urlFor } from "../lib/client";
 import Image from "next/image";
 import Link from "next/link";
 import turnMoney from "../lib/turnMoney";
+import getStripe from "../lib/get-stripejs";
+
 
 const Style = styled(DivProp)`
 width: 100%;
@@ -177,6 +179,7 @@ const Cart: FC = () => {
   
   const { setShowCart, showCart, toggleCartItemQuantity, cartItems, totalPrice, totalQuantities }: any = useStateContext();
 
+  getStripe
   return (
     <>
     <Style active={showCart}>

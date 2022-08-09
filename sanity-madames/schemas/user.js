@@ -30,12 +30,6 @@ export default {
             readOnly: true,
             description: "Esta é a idade do usuario. Caso o usuario seja menor de 18 ele não terá acesso aos brinquedos sexuais comercializados pela loja",
             validation: Rule => Rule.required().min(14).integer().positive().warning("A idade é obrigatória e precisa ser de no mínimo 14 anos")
-        },
-        {
-            name: "createdAt",
-            title: "Registrado Em:",
-            type: "string",
-            readOnly: true
         }
     ]
 }
