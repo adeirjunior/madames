@@ -13,7 +13,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "barcode-input",
-    "autocomplete-tags"
+    "autocomplete-tags",
+    "color-picker"
   ],
   "env": {
     "development": {

@@ -244,7 +244,7 @@ const Item: NextPage = ({ product, products }: any) => {
             </div>
             <div className="you-may-like">
                 <h3>Você tambem pode gostar</h3>
-                <Grid>
+                <Grid productPage>
                     {allProducts()}
                 </Grid>
             </div>

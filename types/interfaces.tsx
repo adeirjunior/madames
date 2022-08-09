@@ -10,6 +10,7 @@ interface DivStyleProps{
     color?: string;
     children?: any;
     active?: boolean;
+    mode?: any;
 }
 interface FormStyleProps{
     className?: string;
