@@ -90,6 +90,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const products = await client.fetch(query);
   const banner = await client.fetch(queryBanner);
 
+  console.log(products);
   return {
     props: {
       products,

@@ -1,4 +1,3 @@
-import { getTokenSourceMapRange } from "typescript";
 
 export default {
     name: 'product',
@@ -23,17 +22,11 @@ export default {
         }
     },
     {
-        name: 'ProductColors',
-        title: 'Cores do Produto',
+        name: 'productColor',
+        title: 'Cor do Produto',
+        description: 'Coloque aqui ',
         type: 'array',
-        of: [
-            {
-                name: 'color',
-                title: 'Cor',
-                type: 'colorPicker',
-                initialValue: "#ffffff"
-            }
-        ]
+        of: [{type: 'colorPicker'}]
     },
     {
         name: 'name',

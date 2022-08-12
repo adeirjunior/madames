@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { client } from "../../lib/client";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { urlFor } from "../../lib/client";
@@ -68,7 +68,7 @@ const Style = styled(DivProp)`
     
     .top-product-part {
         margin-left: 1em;
-        .product-name, .product-price, .parcela {
+        .product-name, .product-price, .parcela, .product-color {
             margin-bottom: 15px;
         }
         .product-name {
@@ -86,6 +86,29 @@ const Style = styled(DivProp)`
         .parcela {
             font-size: .9rem;
             opacity: .7;
+        }
+        .product-color {
+            h3 {
+                margin-bottom: .5em;
+            }
+            .colors {
+                display: flex;
+                div {cursor: pointer;}
+                div:not(:last-child) {
+                    margin-right: .5em;
+                }
+                .color {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    margin: 3px;
+                }
+            }
+            .colors > div:first-child {
+                border-radius: 50%; 
+                border: 2px solid black; 
+                box-sizing: border-box;
+            }
         }
         .product-quantity {
             display: flex;
@@ -149,7 +172,7 @@ const Item: NextPage = ({ product, products }: any) => {
     const [btnText, setBtnText] = useState("Adicionar Ao Carrinho");
     const { image, lowImage, slug, name, desc, details, price } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
-    
+
     const allProducts = () => products.map((product: any) => <Product key={product._id} product={product}/>);
     const sliderSettings = {
         dots: true,
@@ -192,6 +215,8 @@ const Item: NextPage = ({ product, products }: any) => {
         const money = String(currency(price, { symbol: "R$"}).distribute(parcels)[0].format());
         return `${parcels}x de ${money} sem juros`;
     }
+
+
     return (
         <Style>
             <Head>
@@ -212,6 +237,18 @@ const Item: NextPage = ({ product, products }: any) => {
                 <h4 className="product-name">{name}</h4>
                 <div className="product-price">{turnMoney(price)}<span className="descount">{turnMoney(100)}</span></div>
                 <div className="parcela">{parcel(price, 2)}</div>
+                {product?.productColor && (
+                    <div className="product-color">
+                        <h3>cor:</h3>
+                        <div className="colors">
+                            {product.productColor.map((color: string, index: number) => (
+                                <div key={index}>
+                                    <div className="color" style={{backgroundColor: color}}></div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
                 <div className='product-quantity'>
                     <h3>quantidade:</h3>
                     <p className='quantity-desc'> 
@@ -240,7 +277,7 @@ const Item: NextPage = ({ product, products }: any) => {
                 </button>
             </div>
             <div className="bottom-product-part">
-
+                <p>{details}</p>
             </div>
             <div className="you-may-like">
                 <h3>Você tambem pode gostar</h3>
