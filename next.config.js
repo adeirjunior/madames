@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+
+const withOffline = require("next-offline");
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -7,4 +10,4 @@ const nextConfig = {
   experimental: { images: { layoutRaw: true } }
 }
 
-module.exports = nextConfig
+module.exports = withOffline(nextConfig);

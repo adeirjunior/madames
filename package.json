@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "server": "yarn build && cross-env NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -49,8 +50,10 @@
     "babel-loader": "^8.2.5",
     "babel-plugin-styled-components": "^2.0.7",
     "babel-preset-next": "^1.4.0",
+    "cross-env": "^7.0.3",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
+    "next-offline": "^5.0.5",
     "nodemon": "^2.0.16",
     "ts-node": "^10.7.0"
   }

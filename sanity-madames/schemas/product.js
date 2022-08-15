@@ -24,7 +24,7 @@ export default {
     {
         name: 'productColor',
         title: 'Cor do Produto',
-        description: 'Coloque aqui ',
+        description: 'Coloque aqui as cores disponiveis para este produto (Ps: toda vez que atualizar as cores aparecerá uma mensagem de erro, apenas recarregue a pagina que terá sido atualizado)',
         type: 'array',
         of: [{type: 'colorPicker'}]
     },
