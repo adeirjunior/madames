@@ -6,22 +6,22 @@
     "display": "standalone",
     "orientation": "portrait",
     "scope": "/",
-    "start_url": "https://www.madames.store/",
+    "start_url": "http://localhost:3000/",
     "icons": [
       {
-          "src": "https://www.madames.store/icon-192x192.png",
+          "src": "/icon-192x192.png",
           "sizes": "192x192"
       },
       {
-          "src": "https://www.madames.store/icon-256x256.png",
+          "src": "/icon-256x256.png",
           "sizes": "256x256"
       },
       {
-          "src": "https://www.madames.store/icon-384x384.png",
+          "src": "/icon-384x384.png",
           "sizes": "384x384"
       },
       {
-          "src": "https://www.madames.store/icon-512x512.png",
+          "src": "/icon-512x512.png",
           "sizes": "512x512"
       }
     ]
