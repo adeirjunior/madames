@@ -8,6 +8,7 @@ import { Cart } from "./";
 const Style = styled(DivProp)`
 background-color: #fff;
 padding: .75em .75em;
+min-height: 29px;
 display: flex;
 align-items: center;
 justify-content: space-between;
