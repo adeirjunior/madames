@@ -28,6 +28,7 @@
     "next": "12.1.6",
     "next-auth": "^4.3.4",
     "next-image-zoom": "^1.1.7",
+    "next-pwa": "^5.5.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hot-toast": "^2.2.0",
@@ -53,7 +54,6 @@
     "cross-env": "^7.0.3",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
-    "next-offline": "^5.0.5",
     "nodemon": "^2.0.16",
     "ts-node": "^10.7.0"
   }
