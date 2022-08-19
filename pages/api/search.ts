@@ -9,6 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const query: string = req.query.q ? `*[_type == "product" && name == "${req.query.q}"]` : '';
     if (req.method === 'GET' && query) {
         const results = await client.fetch(query);
+        console.log("results");
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ results }))

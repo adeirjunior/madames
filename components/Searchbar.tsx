@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Router from 'next/router';
 import axios from 'axios';
-import type { FC } from "react";
+import { FC } from "react";
 import { BsSearch } from 'react-icons/bs';
 import { DivProp } from "./StyledComponents";
 import { useStateContext } from "../global/context/StateContext";
@@ -47,14 +47,16 @@ margin: 1em 0 5em;
 `;
 
 const SearchBar: FC<SearchBarProp> = ({ filter }) => {
-  
+
   const { setSearchResults, searchText, setSearchText }: any = useStateContext();
+
   const search = async (e: any) => { 
     if (e.code === 'Enter' || e.type === 'click' || e.keyCode === 13) {
       const query = searchText.split(' ').join('+');
-      const data = await axios.get(`/api/search?q=${query}`)
-      setSearchResults(data.data.results);
-      if (Router.asPath !== '/shop' && data.data.results) Router.push('/shop');
+      const {data} = await axios.get(`/api/search?q=${query}`)
+      setSearchResults(data.results);
+      if (Router.asPath !== '/shop' && data.results) 
+        Router.push('/shop', undefined, { shallow: true })
     }
   }
 

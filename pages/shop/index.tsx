@@ -25,9 +25,9 @@ const Shop: NextPage = ({ products }: any) => {
     const allProducts = (products: any) => products.map((product: any) => <Product key={product._id} product={product}/>);
 
     return <Styled>
-        <NextSeo title="Pesquisa" />
+        <NextSeo title="Shop" />
         <SearchBar filter/>
-        {searchResults && searchResults.lenght >= 1 ? (<Grid>{allProducts(searchResults)}</Grid>) : (<p className="no-product">Nenhum produto encontrado</p>)}
+        {searchResults && searchResults.length >= 1 ? <Grid>{allProducts(searchResults)}</Grid> : <p className="no-product">Nenhum produto encontrado</p>}
         <h4 className="other-products">Outros Produtos</h4>
         <Grid>
           {allProducts(products)}
