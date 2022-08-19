@@ -1,10 +1,10 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import Head from 'next/head';
 import styled from 'styled-components';
 import { client } from '../lib/client';
 import { HeroBanner, Product, SearchBar, Grid } from '../components';
 import { useStateContext } from '../global/context/StateContext';
 import { DivProp } from '../components/StyledComponents';
+import { NextSeo } from 'next-seo';
 
 const Style = styled(DivProp)`
   span{
@@ -55,32 +55,28 @@ const Style = styled(DivProp)`
 const Home: NextPage = ({ products, banner }: any) => {
   const { setCategory, category }: any = useStateContext();
 
-  const allProducts = () => products.map((product: any) => <Product key={product._id} product={product}/>);
-  const filteredProducts = () => {
+  function allProducts() { return products.map((product: any) => <Product key={product._id} product={product}/>) };
+  function filteredProducts() {
     const filter = products.filter((product: any) => product.tags[0].value == category)
     return filter.map((product: any) => <Product key={product._id} product={product}/>);
   }
-  return (
-    <Style>
-      <Head>
-        <title>M&apos;adames</title>
-        <meta name="description" content="M'adames é uma loja dedicada a venda de produtos focados a vida íntima feminina" />
-      </Head>
-      <HeroBanner banner={banner[0]} />
-      <SearchBar />
-      <div className='home-categories'>
-        <ul>
-          <li onClick={() => setCategory((prev: string) => prev === "perfumes" ? "" : "perfumes")}>Perfumes</li>
-          <li onClick={() => setCategory((prev: string) => prev === "langeries" ? "" : "langeries")}>Langeries</li>
-          <li onClick={() => setCategory((prev: string) => prev === "sexShop" ? "" : "sexShop")}>Sex Shop</li>
-        </ul>
-      </div>
-      <Grid>
-        {category ? filteredProducts() : allProducts()}
-      </Grid>
-      <span>carregar mais</span>
-    </Style>
-  )
+  
+  return <Style>
+    <NextSeo title="Home" />
+    <HeroBanner banner={banner[0]} />
+    <SearchBar />
+    <div className='home-categories'>
+      <ul>
+        <li onClick={() => setCategory((prev: string) => prev === "perfumes" ? "" : "perfumes")}>Perfumes</li>
+        <li onClick={() => setCategory((prev: string) => prev === "langeries" ? "" : "langeries")}>Langeries</li>
+        <li onClick={() => setCategory((prev: string) => prev === "sexShop" ? "" : "sexShop")}>Sex Shop</li>
+      </ul>
+    </div>
+    <Grid>
+      {category ? filteredProducts() : allProducts()}
+    </Grid>
+    <span>carregar mais</span>
+  </Style>
 }
 export default Home;
 

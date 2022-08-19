@@ -29,6 +29,7 @@
     "next-auth": "^4.3.4",
     "next-image-zoom": "^1.1.7",
     "next-pwa": "5.5.4",
+    "next-seo": "^5.5.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hot-toast": "^2.2.0",

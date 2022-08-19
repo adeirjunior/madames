@@ -5,6 +5,7 @@ import { Grid, Product, SearchBar } from "../../components";
 import { client } from "../../lib/client";
 import { useStateContext } from '../../global/context/StateContext';
 import { DivProp } from "../../components/StyledComponents";
+import { NextSeo } from "next-seo";
 
 const Styled = styled(DivProp)`
   .other-products {
@@ -24,10 +25,7 @@ const Shop: NextPage = ({ products }: any) => {
     const allProducts = (products: any) => products.map((product: any) => <Product key={product._id} product={product}/>);
 
     return <Styled>
-        <Head>
-            <title>M&apos;adames </title>
-            <meta name="description" content="Os produtos da Madames estão sempre prontos á entrega para a máxima satisfação dos clientes" />
-        </Head>
+        <NextSeo title="Pesquisa" />
         <SearchBar filter/>
         {searchResults && searchResults.lenght >= 1 ? (<Grid>{allProducts(searchResults)}</Grid>) : (<p className="no-product">Nenhum produto encontrado</p>)}
         <h4 className="other-products">Outros Produtos</h4>

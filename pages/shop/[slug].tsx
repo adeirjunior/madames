@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { client } from "../../lib/client";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { urlFor } from "../../lib/client";
 import styled from "styled-components";
-import Head from "next/head";
 import { useStateContext } from "../../global/context/StateContext";
 import Image from 'next/image';
 import Slider from "react-slick";
@@ -14,6 +13,7 @@ import { DivProp } from "../../components/StyledComponents";
 import currency from "currency.js";
 import turnMoney from "../../lib/turnMoney";
 import { Grid, Product } from "../../components";
+import { NextSeo } from "next-seo";
 
 const Style = styled(DivProp)`
     background-color: #fff;
@@ -198,15 +198,15 @@ const Item: NextPage = ({ product, products }: any) => {
         return images.map((image: any, index: number) => (
             
                 <Image
-                key={index}
-                height={200} 
-                src={urlFor(image.asset._ref).url()} 
-                alt={slug.current} 
-                width={150} 
-                blurDataURL={urlFor(lowImage.asset._ref).url()} 
-                layout="responsive" 
-                sizes="30vw" 
-                placeholder="blur"
+                    key={index}
+                    height={200} 
+                    src={urlFor(image.asset._ref).url()} 
+                    alt={slug.current} 
+                    width={150} 
+                    blurDataURL={urlFor(lowImage.asset._ref).url()} 
+                    layout="responsive" 
+                    sizes="30vw" 
+                    placeholder="blur"
                 /> 
            
         ));
@@ -219,10 +219,7 @@ const Item: NextPage = ({ product, products }: any) => {
 
     return (
         <Style>
-            <Head>
-                <title>M&apos;adames | {name}</title>
-                <meta name="description" content={desc} />
-            </Head>
+            <NextSeo title={name} description={desc}/>
             <div className="slider">
                 <Slider asNavFor={sliderNav.current} ref={slider} {...sliderSettings}>
                 {image && loadImagesGallery(image)}
