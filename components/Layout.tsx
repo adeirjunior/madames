@@ -24,6 +24,8 @@ overflow: hidden;
 }
 `;
 
+
+
 const Layout = ({ children, path }: ChildrenProp) => {
  
   return (
