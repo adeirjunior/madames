@@ -1,7 +1,7 @@
 import "../style/global.css";
 import type { AppProps } from 'next/app';
 import { Toaster } from 'react-hot-toast';
-import { Layout } from '../components';
+import { Layout, Popup } from '../components';
 import GlobalStyle from '../global/styles/globalStyles';
 import { StateContext } from '../global/context/StateContext';
 import { useRouter } from 'next/router';
@@ -27,6 +27,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <DefaultSeo {...defaultSEO}/>
       <GlobalStyle {...pageProps} cartActivated={showCart} />
       <Toaster />
+      <Popup message="Este site esta em processo de construção." duration={10}/>
       <Component {...pageProps} />
     </Layout>
   </StateContext>

@@ -7,3 +7,4 @@ export { default as Cart } from './Cart';
 export { default as Grid } from './Grid';
 export { default as HeroBanner } from './HeroBanner';
 export { default as SearchBar } from './Searchbar';
+export { default as Popup } from './Popup';
