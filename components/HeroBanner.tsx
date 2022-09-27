@@ -195,39 +195,30 @@ height: 200px;
 `;
 
 const HeroBanner = ({ banner }: any) => {
-  const { image, product, discount, smallText, largeText1, buttonText, desc, saleTime } = banner;
-
+ 
   return (
     <Style>
       <div className="hero-banner-container">
         <div className="banner-left-side">
-          <motion.p animate={{opacity: 1, transition: { delay: .2}}}>{smallText}</motion.p>
-          <motion.h4 animate={{opacity: 1, transition: { delay: .1}}}>{saleTime}</motion.h4>
-          <motion.h3 animate={{opacity: 1}}>{largeText1}</motion.h3>
-          <Link href={`shop/${product}`}>
-            <button>{buttonText}</button>
+          <motion.p animate={{opacity: 1, transition: { delay: .2}}}>test</motion.p>
+          <motion.h4 animate={{opacity: 1, transition: { delay: .1}}}>test</motion.h4>
+          <motion.h3 animate={{opacity: 1}}>test</motion.h3>
+          <Link href={`shop/test`}>
+            <button>test</button>
           </Link>
         </div>
         <motion.div 
         animate={{ opacity: 1, x: 10 }}
         transition={{ duration: .5 }}
         className="image-and-discount">
-          <Image 
-          layout="raw"
-          sizes="30vw"
-          priority
-          alt="ao"
-          src={urlFor(image && image.asset._ref).url()} 
-          width={120} 
-          height={175}
-          />
+          
           <span className="label">
-            {discount}%
+            test
           </span>
         </motion.div>
         <div className="banner-description">
           <motion.h5 animate={{opacity: 1, x: 10}}>Descrição</motion.h5>
-          <motion.p animate={{opacity: 1, x: 10, transition: { delay: .1}}}>{desc}</motion.p>
+          <motion.p animate={{opacity: 1, x: 10, transition: { delay: .1}}}>test</motion.p>
         </div>
       </div>
     </Style>
