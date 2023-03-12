@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^2.0.2",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
     "axios": "^0.27.2",

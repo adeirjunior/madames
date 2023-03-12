@@ -25,3 +25,7 @@ export const productQuery = (slug: string) => `
         ${productFields}
     }
 `
+
+export const queryBanner: string = `
+    *[_type == "banner"]
+`

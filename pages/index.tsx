@@ -5,7 +5,7 @@ import { HeroBanner, Product, SearchBar, Grid } from '../components';
 import { useStateContext } from '../global/context/StateContext';
 import { DivProp } from '../components/StyledComponents';
 import { NextSeo } from 'next-seo';
-import { productsQuery } from '../lib/queries';
+import { productsQuery, queryBanner } from '../lib/queries';
 
 const Style = styled(DivProp)`
   span{
@@ -56,12 +56,12 @@ const Style = styled(DivProp)`
 const Home: NextPage = ({ products, banner }: any) => {
   const { setCategory, category }: any = useStateContext();
 
-  function allProducts() { return products.map((product: any) => <Product key={product._id} product={product}/>) };
-  function filteredProducts() {
+  const allProducts: () => [] = () => products.map((product: any) => (<Product key={product._id} product={product}/>));
+  const filteredProducts: () => [] = () => {
     const filter = products.filter((product: any) => product.tag == category)
-    return filter.map((product: any) => <Product key={product._id} product={product}/>);
+    return filter.map((product: any) => (<Product key={product._id} product={product}/>));
   }
-  
+  console.log(allProducts())
   return <Style>
     <NextSeo title="Home" />
     <HeroBanner banner={banner[0]} />
@@ -82,7 +82,6 @@ const Home: NextPage = ({ products, banner }: any) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const queryBanner: string = '*[_type == "banner"]';
 
   const products = await client.fetch(productsQuery);
   const banner = await client.fetch(queryBanner);

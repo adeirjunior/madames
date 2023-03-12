@@ -1,15 +1,15 @@
 import type { NextPage } from "next";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { client } from "../../lib/client";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { urlFor } from "../../lib/client";
 import styled from "styled-components";
 import { useStateContext } from "../../global/context/StateContext";
 import Image from 'next/image';
-import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { DivProp } from "../../components/StyledComponents";
+import { PortableText } from '@portabletext/react'
 import currency from "currency.js";
 import turnMoney from "../../lib/turnMoney";
 import { Grid, Product } from "../../components";
@@ -168,13 +168,13 @@ const Style = styled(DivProp)`
 `;
 
 const Item: NextPage = ({ product, products }: any) => {
-    const sliderNav: any = useRef(null);
-    const slider: any = useRef(null);
+
     const [btnText, setBtnText] = useState("Adicionar Ao Carrinho");
-    const { image, lowImage, slug, name, desc, details, price } = product;
+    const { image, slug, name, desc, details, price } = product;
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
 
-    const allProducts = () => products.map((product: any) => <Product key={product._id} product={product}/>);
+    const allProducts: () => [] = () => products.map((product: any) => (<Product key={product._id} product={product}/>));
+    
     const btnClick = () => {
         if (btnText === "Adicionar Ao Carrinho") {
             setBtnText("✓")
@@ -204,18 +204,6 @@ const Item: NextPage = ({ product, products }: any) => {
                 <h4 className="product-name">{name}</h4>
                 <div className="product-price">{turnMoney(price)}<span className="descount">{turnMoney(100)}</span></div>
                 <div className="parcela">{parcel(price, 2)}</div>
-                {product?.productColor && (
-                    <div className="product-color">
-                        <h3>cor:</h3>
-                        <div className="colors">
-                            {product.productColor.map((color: string, index: number) => (
-                                <div key={index}>
-                                    <div className="color" style={{backgroundColor: color}}></div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
                 <div className='product-quantity'>
                     <h3>quantidade:</h3>
                     <p className='quantity-desc'> 
@@ -244,7 +232,7 @@ const Item: NextPage = ({ product, products }: any) => {
                 </button>
             </div>
             <div className="bottom-product-part">
-                <p>{details}</p>
+                <PortableText value={details} />
             </div>
             <div className="you-may-like">
                 <h3>Você tambem pode gostar</h3>
@@ -276,6 +264,7 @@ export const getStaticProps = async ({ params: { slug } }: any) => {
 
     const product = await client.fetch(productQuery(slug));
     const products = await client.fetch(productsQuery);
+
     return {
         props: {
             product,

@@ -68,7 +68,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <P>Site feito por <a rel="noreferrer" href="https://adeirjunior.carrd.co/" target="_blank">Adeir Junior</a></P>
+      <P>Site feito por <a rel="noreferrer" href="https://adeir.me/" target="_blank">Adeir Junior</a></P>
     </Style>
   </>
   )
