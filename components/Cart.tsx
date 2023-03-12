@@ -200,7 +200,7 @@ const Cart: FC = () => {
             cartItems.map((item: any, index: any) => 
             (
               <div key={index} className="product">
-                <Link href={`/shop/${item?.slug.current}`}>
+                <Link href={`/shop/${item?.slug}`}>
                   <div onClick={() => setShowCart(false)} className="image">
                     <Image 
                     layout="responsive"
