@@ -5,6 +5,7 @@ import { HeroBanner, Product, SearchBar, Grid } from '../components';
 import { useStateContext } from '../global/context/StateContext';
 import { DivProp } from '../components/StyledComponents';
 import { NextSeo } from 'next-seo';
+import { productsQuery } from '../lib/queries';
 
 const Style = styled(DivProp)`
   span{
@@ -54,10 +55,12 @@ const Style = styled(DivProp)`
 
 const Home: NextPage = ({ products, banner }: any) => {
   const { setCategory, category }: any = useStateContext();
+  
+  console.log(products[0].tag)
 
   function allProducts() { return products.map((product: any) => <Product key={product._id} product={product}/>) };
   function filteredProducts() {
-    const filter = products.filter((product: any) => product.tags[0].value == category)
+    const filter = products.filter((product: any) => product.tag == category)
     return filter.map((product: any) => <Product key={product._id} product={product}/>);
   }
   
@@ -67,9 +70,9 @@ const Home: NextPage = ({ products, banner }: any) => {
     <SearchBar />
     <div className='home-categories'>
       <ul>
-        <li onClick={() => setCategory((prev: string) => prev === "perfumes" ? "" : "perfumes")}>Perfumes</li>
-        <li onClick={() => setCategory((prev: string) => prev === "langeries" ? "" : "langeries")}>Langeries</li>
-        <li onClick={() => setCategory((prev: string) => prev === "sexShop" ? "" : "sexShop")}>Sex Shop</li>
+        <li onClick={() => setCategory((prev: string) => prev === "Perfumes" ? "" : "Perfumes")}>Perfumes</li>
+        <li onClick={() => setCategory((prev: string) => prev === "Langeries" ? "" : "Langeries")}>Langeries</li>
+        <li onClick={() => setCategory((prev: string) => prev === "Sex Shop" ? "" : "Sex Shop")}>Sex Shop</li>
       </ul>
     </div>
     <Grid>
@@ -81,9 +84,9 @@ const Home: NextPage = ({ products, banner }: any) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const query: string = `*[_type == "product"]`;
   const queryBanner: string = '*[_type == "banner"]';
-  const products = await client.fetch(query);
+
+  const products = await client.fetch(productsQuery);
   const banner = await client.fetch(queryBanner);
 
   return {

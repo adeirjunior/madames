@@ -14,6 +14,7 @@ import currency from "currency.js";
 import turnMoney from "../../lib/turnMoney";
 import { Grid, Product } from "../../components";
 import { NextSeo } from "next-seo";
+import { productQuery, productsQuery } from "../../lib/queries";
 
 const Style = styled(DivProp)`
     background-color: #fff;
@@ -174,42 +175,11 @@ const Item: NextPage = ({ product, products }: any) => {
     const { qty, decQty, incQty, onAdd }: any = useStateContext();
 
     const allProducts = () => products.map((product: any) => <Product key={product._id} product={product}/>);
-    const sliderSettings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    }
-    const sliderNavSettings = {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true,
-    }
     const btnClick = () => {
         if (btnText === "Adicionar Ao Carrinho") {
             setBtnText("✓")
             setTimeout(() => { setBtnText("Adicionar Ao Carrinho")}, 1000)
         }
-    }
-    const loadImagesGallery = (images: []) => {
-        return images.map((image: any, index: number) => (
-            
-                <Image
-                    key={index}
-                    height={200} 
-                    src={urlFor(image.asset._ref).url()} 
-                    alt={slug.current} 
-                    width={150} 
-                    blurDataURL={urlFor(lowImage.asset._ref).url()} 
-                    layout="responsive" 
-                    sizes="30vw" 
-                    placeholder="blur"
-                /> 
-           
-        ));
     }
     const parcel = (price: number, parcels: number) => {
         const money = String(currency(price, { symbol: "R$"}).distribute(parcels)[0].format());
@@ -221,14 +191,14 @@ const Item: NextPage = ({ product, products }: any) => {
         <Style>
             <NextSeo title={name} description={desc}/>
             <div className="slider">
-                <Slider asNavFor={sliderNav.current} ref={slider} {...sliderSettings}>
-                {image && loadImagesGallery(image)}
-                </Slider>
-                <div className="small-controller">
-                    <Slider asNavFor={slider.current} ref={sliderNav} {...sliderNavSettings}>
-                        {image.length !==1 && loadImagesGallery(image)}
-                    </Slider>
-                </div>
+                <Image
+                    height={200} 
+                    src={urlFor(image.asset._ref).url()} 
+                    alt={slug.current} 
+                    width={150}
+                    layout="responsive" 
+                    sizes="30vw"
+                />
             </div>
             <div className="top-product-part">
                 <h4 className="product-name">{name}</h4>
@@ -289,16 +259,11 @@ const Item: NextPage = ({ product, products }: any) => {
 export default Item;
 
 export const getStaticPaths = async () => {
-    const query = `*[_type == "product"] {
-        slug {
-            current
-        }
-    }`;
 
-    const products = await client.fetch(query);
+    const products = await client.fetch(productsQuery);
     const paths = products.map((product: any) => ({
         params: {
-            slug: product.slug.current
+            slug: product.slug
         }
     }));
     return {
@@ -306,10 +271,10 @@ export const getStaticPaths = async () => {
         fallback: false
     } 
 }
+
 export const getStaticProps = async ({ params: { slug } }: any) => {
-    const query = `*[_type == "product" && slug.current == "${slug}"][0]`;
-    const productsQuery = '*[_type == "product"]';
-    const product = await client.fetch(query);
+
+    const product = await client.fetch(productQuery(slug));
     const products = await client.fetch(productsQuery);
     return {
         props: {

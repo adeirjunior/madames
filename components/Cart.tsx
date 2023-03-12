@@ -8,7 +8,6 @@ import { urlFor } from "../lib/client";
 import Image from "next/image";
 import Link from "next/link";
 import turnMoney from "../lib/turnMoney";
-import getStripe from "../lib/get-stripejs";
 
 
 const Style = styled(DivProp)`
@@ -179,7 +178,6 @@ const Cart: FC = () => {
   
   const { setShowCart, showCart, toggleCartItemQuantity, cartItems, totalPrice, totalQuantities }: any = useStateContext();
 
-  getStripe
   return (
     <>
     <Style active={showCart}>
@@ -210,7 +208,7 @@ const Cart: FC = () => {
                     sizes="75vw"
                     alt="image"
                     height={75}
-                    src={urlFor(item?.image && item?.image[0].asset._ref).url()} 
+                    src={urlFor(item?.image && item?.image.asset._ref).url()} 
                     />
                   </div>  
                 </Link> 

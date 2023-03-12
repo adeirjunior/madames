@@ -66,17 +66,17 @@ const Product: FC<Prop> = ({ product: {image, name, slug, price, lowImage} }: Pr
     whileHover={{ scale: 1.05 }} 
     >
       <Style>
-        <Link href={`/shop/${slug?.current}`}>
+        <Link href={`/shop/${slug}`}>
           <div className="product">
             <Image
-            alt={slug?.current}
+            alt={slug}
             layout="responsive"
             sizes="25vw"
             placeholder="blur"
             blurDataURL={urlFor(lowImage ? lowImage.asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()}
             width={250} 
             height={325} 
-            src={urlFor(image ? image[0].asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()}
+            src={urlFor(image ? image.asset._ref : 'image-Tb9Ew8CXIwaY6R1kjMvI0uRR-2000x3000-jpg').url()}
             />
             <p className="product-name">{name}</p>
             <p className="product-price">{turnMoney(price)}</p>
