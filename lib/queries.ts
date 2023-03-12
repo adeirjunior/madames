@@ -1,12 +1,13 @@
 const productFields = `
-  name,
-  image,
-  productStock,
-  price,
-  details,
-  desc,
-  "slug": slug.current,
-  "tag": tag -> name,
+    _id,
+    name,
+    image,
+    productStock,
+    price,
+    details,
+    desc,
+    "slug": slug.current,
+    "tag": tag -> name,
 `
 
 const bannerFields = `

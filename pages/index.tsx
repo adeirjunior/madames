@@ -55,8 +55,6 @@ const Style = styled(DivProp)`
 
 const Home: NextPage = ({ products, banner }: any) => {
   const { setCategory, category }: any = useStateContext();
-  
-  console.log(products[0].tag)
 
   function allProducts() { return products.map((product: any) => <Product key={product._id} product={product}/>) };
   function filteredProducts() {
